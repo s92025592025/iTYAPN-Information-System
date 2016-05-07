@@ -3,5 +3,6 @@
 <accounts>
 	<accountInfo>
 		<name>Daniel</name>
+		<password>a</password>
 	</accountInfo>
 </accounts>
