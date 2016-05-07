@@ -1,13 +1,50 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Login</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="login.css">
-		<script type="text/javascript" src="login.js"/>
+		<link rel="icon" type="img/jpg" href="img/logo.jpg">
+		<script type="text/javascript" src="login.js"></script>
 	</head>
 
 	<body>
+		<nav class="nav navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TYAPN</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="banner">
+			<img src="img/banner.jpg" alt="TYAPN_banner">
+		</div>
+
+		<div id="login" class="row">
+			<div class="col-sm-2 col-md-3"></div>
+			<fieldset class="col-sm-8 form col-md-6">
+				<legend>Login</legend>
+				<div class="form-group">
+					<label>Account: </label>
+					<input type="text" class="form-control"></input>
+				</div>
+				<div class="from-group">
+					<label>Password: </label>
+					<input type="password" class="form-control"></input>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox">Remember my account name</input></label>
+				</div>
+				<div id="btn_div">
+					<button type="button" class="btn btn-default btn-lg" id="login_btn">Login</button>
+				</div>
+			</fieldset>
+			<div class="col-sm-2 col-md-3"></div>
+		</div>
 
 	</body>
 </html>
