@@ -8,5 +8,6 @@
   </ul>
 <h2>Finished Progress</h2>
   <ul>
-    <li>2015/05/06: login Page layout finished</li>
+    <li>2016/05/06: login Page layout finished</li>
+    <li>2016/05/07: php login verification complete</li>
   </ul>
