@@ -20,3 +20,8 @@ label {
 #btn_div {
 	text-align: center;
 }
+
+span {
+	color: red;
+	font-size: 10pt;
+}
