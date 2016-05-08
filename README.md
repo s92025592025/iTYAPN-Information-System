@@ -4,10 +4,12 @@
 
 <h2>Current Progress</h2>
   <ul>
-    <li>2016/05/06: Building up login Page and System</li>
+    <li>2016/05/06 - 2016/05/08: Building up login Page and System</li>
+    <li>2016/05/10: Build up dashboard
   </ul>
 <h2>Finished Progress</h2>
   <ul>
     <li>2016/05/06: login Page layout finished</li>
     <li>2016/05/07: php login verification complete</li>
+    <li>2016/05/08: login on page successful</li>
   </ul>
