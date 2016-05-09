@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<companies>
+	<company>
+		<chineseName></chineseName>
+		<engName></engName>
+		<contactInfo>
+			<phone></phone>
+			<email></email>
+			<otherContact>
+				<contact></contact>
+			</otherContact>
+			<contactee></contactee>
+		</contactInfo>
+		<year year="2016" cooperate="true">
+			<positions>
+				<position name="Job name">
+					<requirements>
+						<requirement></requirement>
+					</requirement>
+					<location></location>
+					<paid paid="true"></paid>
+					<applied></applied>
+				</position>
+			</positions>
+			<logs>
+				<log time="time" author="Daniel W.">
+					<text></text>
+				</log>
+			</logs>
+		</year>
+	</company>
+</companies>
