@@ -1,4 +1,5 @@
 (function(){
+	"use strict";
 	window.onload = function(){
 		document.getElementById("login_btn").onclick = verify;
 		document.getElementById("account_input").onkeypress = submit;
@@ -7,15 +8,15 @@
 
 	function verify(){
 		if(document.getElementById("account_input").value == ""){
-			document.getElementById("account_label").innerHTML += 
-				"<span>*Please enter your account name</span>";
+			document.getElementById("account_label").innerHTML = 
+				"Account: <span>*Please enter your account name</span>";
 		}else{
 			document.getElementById("account_label").innerHTML = "Account: ";
 		}
 
 		if(document.getElementById("pw_input").value == ""){
-			document.getElementById("pw_label").innerHTML += 
-			 "<span>*Please enter your account password</span>";
+			document.getElementById("pw_label").innerHTML = 
+			 "Password: <span>*Please enter your account password</span>";
 		}else{
 			document.getElementById("pw_label").innerHTML = "Password: ";
 		}

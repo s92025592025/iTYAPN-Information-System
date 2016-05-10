@@ -12,7 +12,7 @@
 			</otherContact>
 			<contactee></contactee>
 		</contactInfo>
-		<year year="2016" cooperate="true">
+		<year year="2016" cooperate="true" coopNextYear="ture">
 			<positions>
 				<position name="Job name">
 					<requirements>
