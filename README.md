@@ -12,4 +12,5 @@
     <li>2016/05/06: login Page layout finished</li>
     <li>2016/05/07: php login verification complete</li>
     <li>2016/05/08: login on page successful</li>
+    <li>2016/05/10: make sure all the essential details</li>
   </ul>
