@@ -1,9 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 
 <companies>
 	<company>
-		<chineseName>康軒文教事業股份有限公司</chineseName>
-		<engName></engName>
+		<name>
+			<chineseName>康軒文教事業股份有限公司</chineseName>
+			<engName>kan</engName>
+		</name>
 		<contactInfo>
 			<Pphone>(02)29189393</Pphone>
 			<Pemail></Pemail>
@@ -22,8 +24,7 @@
 			 cooperate and coopNextYear have three types of condition:
 			 	true, false, unknown
 		-->
-		<year year="2015" cooperate="true" coopNextYear="ture">
-			<owner>Daniel</owner>
+		<year year="2015" cooperate="true" coopNextYear="ture" owner="Daniel">
 			<positions>
 				<!-- 
 					 name should be the name of that position
@@ -58,14 +59,14 @@
 				<log time="1462942450.54" author="Daniel">
 					<text>測試訊息第一條</text>
 					<files>
-						<img>http://imgur.com/gallery/mGJI4WY</img>
+						<images>http://imgur.com/gallery/mGJI4WY</images>
 						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
 					</files>
 				</log>
 				<log time="1462943303.21" author="Daniel">
 					<text>Time make make some chimi f**king changas</text>
 					<file>
-						<img>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</img>
+						<images>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</images>
 					</file>
 				</log>
 			</logs>
@@ -73,8 +74,10 @@
 	</company>
 
 	<company>
-		<chineseName>乒乓話網股份有限公司</chineseName>
-		<engName>YPCloud</engName>
+		<name>
+			<chineseName>乒乓話網股份有限公司</chineseName>
+			<engName>YPCloud</engName>
+		</name>
 		<contactInfo>
 			<Pphone>+886-2-77283060</Pphone>
 			<Pemail>info@ypcloud.com</Pemail>
@@ -89,8 +92,7 @@
 			 cooperate and coopNextYear have three types of condition:
 			 	true, false, unknown
 		-->
-		<year year="2015" cooperate="true" coopNextYear="ture">
-			<owner>Deadpool</owner>
+		<year year="2015" cooperate="true" coopNextYear="ture" owner="Deadpool">
 			<positions>
 				<!-- 
 					 name should be the name of that position
@@ -134,14 +136,14 @@
 				<log time="1462945639.55" author="Deadpool">
 					<text>我要應徵閃靈主唱</text>
 					<files>
-						<img>http://images-cdn.moviepilot.com/images/c_fill,h_574,w_929/t_mp_quality/ss9ov2xn3821hfzwl2r5/cable-is-confirmed-to-appear-in-deadpool-2-but-what-about-wolverine-could-deadpool-2-831436.jpg</img>
+						<images>http://images-cdn.moviepilot.com/images/c_fill,h_574,w_929/t_mp_quality/ss9ov2xn3821hfzwl2r5/cable-is-confirmed-to-appear-in-deadpool-2-but-what-about-wolverine-could-deadpool-2-831436.jpg</images>
 						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
 					</files>
 				</log>
 				<log time="1462946536.2" author="Daniel">
 					<text>Stop it</text>
 					<file>
-						<img>http://imgur.com/gallery/3LSP7oM</img>
+						<images>http://imgur.com/gallery/3LSP7oM</images>
 					</file>
 				</log>
 			</logs>
