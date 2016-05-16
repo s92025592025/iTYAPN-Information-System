@@ -9,7 +9,7 @@
 				companyLists();
 				break;
 			case "yearLists":
-				# code...
+				yearLists($_GET["year"]);
 				break;
 			case "detailed":
 				# code...
@@ -32,10 +32,11 @@
 ?>
 
 <?php
+# php block for functions
+
 function companyLists(){
-	$xml = new DOMDocument();
+	$xml = loadData();
 	$output = new DOMDocument();
-	$xml -> load("companyData.xml");
 	$names = $output->createElement("names");
 	$companies = $xml->getElementsByTagName("company");
 	foreach ($companies as $company) {
@@ -53,4 +54,43 @@ function companyLists(){
 	header("Content-type: text/xml");
 	print($output->saveXML());
 }
+
+function yearLists($year){
+	if($year == null){
+		header("HTTP/1.1 400 Please specify a year");
+		die("Please specify a year");
+	}
+
+	$xml = loadData();
+	$output = new DOMDocument();
+	$data = $output->createElement("data");
+	$data->setAttribute("year", $year); # make the returned year
+	getSameYear($year);
+	$output->appendChild($data);
+}
+
+
+# pre: should have companyData.xml file
+# post: will return the entire companyData.xml file by a xml structure
+function loadData(){
+	$xml = new DOMDocument();
+	$xml->load("companyData.xml");
+
+	return $xml;
+}
+
+# pre: should enter a valid year in western style to year
+# post: returns a list on year element what occurs in the year passed in
+function getSameYear($year){
+	$xml = loadData();
+	$years = array();
+	foreach($xml->getElementsByTagName("year") as $oneyear){
+		if($oneyear->getAttribute("year") == $year){
+			$years[] = $oneyear;
+		}
+	}
+
+	return $years;
+}
+
 ?>

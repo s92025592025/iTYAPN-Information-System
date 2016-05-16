@@ -57,13 +57,14 @@
 			<logs>
 				<!--use milliseconds as time account name as author-->
 				<log time="1462942450.54" author="Daniel">
+					<time>today</time>
 					<text>測試訊息第一條</text>
 					<files>
 						<images>http://imgur.com/gallery/mGJI4WY</images>
 						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
 					</files>
 				</log>
-				<log time="1462943303.21" author="Daniel">
+				<log time="1462943303.21" author="Deadpool">
 					<text>Time make make some chimi f**king changas</text>
 					<file>
 						<images>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</images>
@@ -134,6 +135,7 @@
 			<logs>
 				<!--use milliseconds as time account name as author-->
 				<log time="1462945639.55" author="Deadpool">
+					<time>yesterday</time>
 					<text>我要應徵閃靈主唱</text>
 					<files>
 						<images>http://images-cdn.moviepilot.com/images/c_fill,h_574,w_929/t_mp_quality/ss9ov2xn3821hfzwl2r5/cable-is-confirmed-to-appear-in-deadpool-2-but-what-about-wolverine-could-deadpool-2-831436.jpg</images>
@@ -141,6 +143,7 @@
 					</files>
 				</log>
 				<log time="1462946536.2" author="Daniel">
+					<time>tomorrow</time>
 					<text>Stop it</text>
 					<file>
 						<images>http://imgur.com/gallery/3LSP7oM</images>
