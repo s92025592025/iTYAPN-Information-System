@@ -40,6 +40,7 @@ function companyLists(){
 	$names = $output->createElement("names");
 	$companies = $xml->getElementsByTagName("company");
 	foreach ($companies as $company) {
+		# set up the names of the company 
 		$name = $output->createElement("name");
 		$chineseName = $output->createElement("chineseName");
 		$engName = $output->createElement("engName");
@@ -63,10 +64,33 @@ function yearLists($year){
 
 	$xml = loadData();
 	$output = new DOMDocument();
+	$sameYear = getSameYear($year);
 	$data = $output->createElement("data");
 	$data->setAttribute("year", $year); # make the returned year
-	getSameYear($year);
+	foreach($sameYear as $eachNode){
+		$company = $output->createElement("company");
+
+		# add name to company
+		$names = $output->createElement("names");
+			$chineseName = $output->createElement("chineseName");
+			$engName = $output->createElement("engName");
+		$chineseName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("chineseName")->item(0)->nodeValue));
+		$engName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("engName")->item(0)->nodeValue));
+		$names->appendChild($chineseName);
+		$names->appendChild($engName);
+		$company->appendChild($names);
+
+		# add position information of that year
+
+		# put the company when the data is collect
+		$data->appendChild($company);
+	}
+	#put everything back
 	$output->appendChild($data);
+
+	#output
+	header("Content-type: text/xml");
+	print($output->saveXML());
 }
 
 
