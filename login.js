@@ -4,7 +4,21 @@
 		document.getElementById("login_btn").onclick = verify;
 		document.getElementById("account_input").onkeypress = submit;
 		document.getElementById("pw_input").onkeypress = submit;
+		loggedinCheck();
 	};
+
+	function loggedinCheck(){
+		var request = new XMLHttpRequest();
+		request.onload = function(){
+			console.log("Request sent");
+			console.log(this.responseText);
+			if(this.responseText == "TRUE"){
+				window.location = "http://stackoverflow.com/questions/686155/remove-a-cookie";
+			}
+		};
+		request.open("GET", "data/loginCookieCheck.php", true);
+		request.send();
+	}
 
 	function verify(){
 		if(document.getElementById("account_input").value == ""){
@@ -26,7 +40,7 @@
 			var request = new XMLHttpRequest();
 			request.onload = function(){
 				var response = this.responseText;
-				console.log(response);
+				console.log(response); 
 				if(response == "TRUE"){
 					window.location = "http://www.google.com";
 				}else{
@@ -38,6 +52,7 @@
 				document.getElementById("account_input").value + "&pw=" + 
 				document.getElementById("pw_input").value, false);
 			request.send();
+			loggedinCheck();
 		}
 	}
 

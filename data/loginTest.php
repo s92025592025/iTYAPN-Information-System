@@ -19,6 +19,7 @@
 		foreach($accounts as $account){
 			if ($account->getElementsByTagName("name")->item(0)->nodeValue == $name) {
 				if($account->getElementsByTagName("password")->item(0)->nodeValue == $pw){
+					setcookie("name", $name);
 					return "TRUE";
 				}
 				return "FALSE";
