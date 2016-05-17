@@ -14,7 +14,7 @@
 					return "TRUE";
 				}
 			}
-			return "FALSE";
 		}
+		return "FALSE";
 	}
 ?>
