@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <companies>
-	<company>
+	<catagories>
+		<category></category>
+	</catagories>
+	<company catagory="">
 		<name>
 			<chineseName>康軒文教事業股份有限公司</chineseName>
 			<engName>kan</engName>
@@ -74,7 +77,7 @@
 		</year>
 	</company>
 
-	<company>
+	<company category="">
 		<name>
 			<chineseName>乒乓話網股份有限公司</chineseName>
 			<engName>YPCloud</engName>
