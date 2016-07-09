@@ -1,5 +1,4 @@
 <?php
-	checkByDB("Daniel", "a");
 	header("Content-Type: type/plain");
 	session_start();
 	
@@ -11,7 +10,7 @@
 	}else if($_GET["name"] && $_GET["pw"]){
 		$name = $_GET["name"];
 		$pw = $_GET["pw"];
-		print(varify($name, $pw));
+		print(checkByDB($name, $pw));
 	}else{
 		print("Need to pass in account and pw");
 	}
@@ -36,17 +35,21 @@
 		$name = $conn->quote($name);
 		$pw = $conn->quote($pw);
 
-		$account = $conn->query("SELECT 
-								 FROM user_data u
-								 WHERE u.user=$name AND u.password=$pw");
+		$account = $conn->query("SELECT user
+								 FROM user_data
+								 WHERE user=$name AND password=$pw
+								 LIMIT 1");
 
-		if(count($account)){
+		return "A";
+
+		/*if(count($account)){
 			#if account found
+			$_SESSION["user"] = $_GET["name"];
 			return "TRUE";
 		}else{
 			#if account not found
-			#still need to manipulate cookie and session
+			unset($_SESSION["user"]);
 			return "FALSE";
-		}
+		}*/
 	}
 ?>
