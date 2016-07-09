@@ -36,13 +36,11 @@
 		$pw = $conn->quote($pw);
 
 		$account = $conn->query("SELECT user
-								 FROM user_data
-								 WHERE user=$name AND password=$pw
-								 LIMIT 1");
+								 FROM dbo.user_data
+								 WHERE user LIKE $name AND password LIKE $pw");
 
-		return "A";
-
-		/*if(count($account)){
+		return $account[0];
+		if(count($account)){
 			#if account found
 			$_SESSION["user"] = $_GET["name"];
 			return "TRUE";
@@ -50,6 +48,6 @@
 			#if account not found
 			unset($_SESSION["user"]);
 			return "FALSE";
-		}*/
+		}
 	}
 ?>
