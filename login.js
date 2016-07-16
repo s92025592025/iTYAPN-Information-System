@@ -1,5 +1,6 @@
 (function(){
 	"use strict";
+
 	window.onload = function(){
 		document.getElementById("login_btn").onclick = verify;
 		document.getElementById("account_input").onkeypress = submit;
@@ -45,6 +46,19 @@
 		if(e.keycode == 13 || e.which == 13){
 			verify();
 		}
+	}
+
+	function checkLoggedIn(){
+		var request = new XMLHttpRequest();
+		request.onload = function(){
+			console.log(this.responseText);
+			if(this.responseText == "TRUE"){
+				window.location = "http://www.w3schools.com/js/js_window_location.asp";
+			}
+		};
+
+		request.open("GET", "data/loginTest.php?check=ivs630s5573v56dj9a", false);
+		request.send();
 	}
 
 })();
