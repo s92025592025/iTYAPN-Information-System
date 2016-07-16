@@ -13,4 +13,5 @@
     <li>2016/05/07: php login verification complete</li>
     <li>2016/05/08: login on page successful</li>
     <li>2016/05/10: make sure all the essential details</li>
+    <li>2016/07/16: move account storage from XML to DB</li>
   </ul>
