@@ -1,7 +1,7 @@
 <?php
 	include("common.php");
 
-	Header("Account", "login.css");
+	HTMLHeader("Account", "login.css");
 
-	Footer();
+	HTMLFooter();
 ?>

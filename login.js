@@ -29,7 +29,7 @@
 				var response = this.responseText;
 				console.log(response);
 				if(response == "TRUE"){
-					window.location = "http://www.google.com";
+					window.location = "home.php";
 				}else{
 					alert("Wrong account or password");
 				}
@@ -53,7 +53,7 @@
 		request.onload = function(){
 			console.log(this.responseText);
 			if(this.responseText == "TRUE"){
-				window.location = "http://www.w3schools.com/js/js_window_location.asp";
+				window.location = "home.php";
 			}
 		};
 

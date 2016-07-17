@@ -1,5 +1,5 @@
 <?php
-	function Header($title, $css){
+	function HTMLheader($title, $css, $js){
 		?>
 			<!DOCTYPE html>
 			<html>
@@ -8,7 +8,7 @@
 					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 					<link rel="stylesheet" type="text/css" href=<?=$css?>>
 					<link rel="icon" type="img/jpg" href="img/logo.jpg">
-					<script type="text/javascript" src="login.js"></script>
+					<script type="text/javascript" src=<?=$js?>></script>
 				</head>
 
 				<body>
@@ -30,7 +30,7 @@
 		<?php
 	}
 
-	function Footer(){
+	function HTMLFooter(){
 		?>
 				</body>
 			</html>
