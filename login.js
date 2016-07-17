@@ -1,6 +1,8 @@
 (function(){
 	"use strict";
 
+	checkLoggedIn();
+
 	window.onload = function(){
 		document.getElementById("login_btn").onclick = verify;
 		document.getElementById("account_input").onkeypress = submit;
