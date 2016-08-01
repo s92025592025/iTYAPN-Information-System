@@ -3,6 +3,8 @@
 
 	checkLoggedIn();
 
+	session_start();
+
 	HTMLHeader("Account", "login.css");
 
 	HTMLFooter();

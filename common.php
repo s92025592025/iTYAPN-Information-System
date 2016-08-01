@@ -7,7 +7,9 @@
 			<html>
 				<head>
 					<title><?=$title?></title>
+					<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+					<link rel="stylesheet" type="text/css" href="login.css">
 					<link rel="stylesheet" type="text/css" href=<?=$css?>>
 					<link rel="icon" type="img/jpg" href="img/logo.jpg">
 					<script type="text/javascript" src=<?=$js?>></script>
@@ -43,7 +45,7 @@
 
 	# pre: whenever need to connect to the database
 	# post: return a PDO object that connect to the db
-	function ConnectToDB(){
+	function connectToDB(){
 		try{
 			$conn = new PDO ("sqlsrv:server = tcp:ityapn-database-server.database.windows.net,1433; Database = iTYAPNSystemDB", trim(file("data\dbInformation.txt")[0]), trim(file("data\dbInformation.txt")[1]));
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
