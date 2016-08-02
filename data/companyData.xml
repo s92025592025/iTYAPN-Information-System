@@ -1,31 +1,156 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 
 <companies>
-	<company>
-		<chineseName></chineseName>
-		<engName></engName>
+	<catagories>
+		<category></category>
+	</catagories>
+	<company catagory="">
+		<name>
+			<chineseName>康軒文教事業股份有限公司</chineseName>
+			<engName>kan</engName>
+		</name>
 		<contactInfo>
-			<phone></phone>
-			<email></email>
+			<Pphone>(02)29189393</Pphone>
+			<Pemail></Pemail>
 			<otherContact>
-				<contact></contact>
+				<!-- 
+					 title attribute should have the following attribute:
+					 phone, email, skype, address, other
+				 -->
+				<contact title=""></contact>
 			</otherContact>
-			<contactee></contactee>
 		</contactInfo>
-		<year year="2016" cooperate="true" coopNextYear="ture">
+		<discription>
+			致力教科書的研究發展及教學媒體的規畫設計，是臺灣中小學教科書出版業領導品牌
+		</discription>
+		<!-- Use the year the project starts as the year
+			 cooperate and coopNextYear have three types of condition:
+			 	true, false, unknown
+		-->
+		<year year="2015" cooperate="true" coopNextYear="ture" owner="Daniel">
 			<positions>
-				<position name="Job name">
+				<!-- 
+					 name should be the name of that position
+					 amount should be a number of how many people is the company 
+					 looking for, if unknown, input a number smaller than 0
+				-->
+				<position name="國小英語科文字編輯" amount="1">
 					<requirements>
-						<requirement></requirement>
-					</requirement>
-					<location></location>
-					<paid paid="true"></paid>
-					<applied></applied>
+						<requirement>英文要精通</requirement>
+					</requirements>
+					<about>協助國小教科書與參考書英語科編輯校對工作。</about>
+					<location>台北</location>
+					<!-- 
+						 paid attribute should have three types of values:
+						 true, false, unknown
+					-->
+					<paid paid="unknown"></paid>
+					<applied>10</applied>
+				</position>
+				<position name="華語文教材行銷企畫" amount="1">
+					<requirements>
+						<requirement>華文要精通</requirement>
+					</requirements>
+					<about>協助海外華語文教材推廣作業。</about>
+					<location>台北</location>
+					<paid paid="unknow"></paid>
+					<applied>7</applied>
 				</position>
 			</positions>
 			<logs>
-				<log time="time" author="Daniel W.">
-					<text></text>
+				<!--use milliseconds as time account name as author-->
+				<log time="1462942450.54" author="Daniel">
+					<time>today</time>
+					<text>測試訊息第一條</text>
+					<files>
+						<images>http://imgur.com/gallery/mGJI4WY</images>
+						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
+					</files>
+				</log>
+				<log time="1462943303.21" author="Deadpool">
+					<text>Time make make some chimi f**king changas</text>
+					<file>
+						<images>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</images>
+					</file>
+				</log>
+			</logs>
+		</year>
+	</company>
+
+	<company category="">
+		<name>
+			<chineseName>乒乓話網股份有限公司</chineseName>
+			<engName>YPCloud</engName>
+		</name>
+		<contactInfo>
+			<Pphone>+886-2-77283060</Pphone>
+			<Pemail>info@ypcloud.com</Pemail>
+			<otherContact>
+				<contact title="address">11011 台北市信義區5段5號6D-07</contact>
+			</otherContact>
+		</contactInfo>
+		<discription>
+			由Acer共同創辦人林家和先生成立，整合雲端產業佈健全球市場，科技部雲端辦公室將其評定為「台灣唯一具有雲端開發工具的雲端公司」，在印度及伊朗設有分公司。
+		</discription>
+		<!-- Use the year the project starts as the year
+			 cooperate and coopNextYear have three types of condition:
+			 	true, false, unknown
+		-->
+		<year year="2015" cooperate="true" coopNextYear="ture" owner="Deadpool">
+			<positions>
+				<!-- 
+					 name should be the name of that position
+					 amount should be a number of how many people is the company 
+					 looking for, if unknown, input a number smaller than 0
+				-->
+				<position name="Web 前端工程實習生" amount="3">
+					<requirements>
+						<requirement>視覺設計師溝通</requirement>
+					</requirements>
+					<about>與視覺設計師或使用者溝通，提供更好的前端使用介面</about>
+					<location>台北</location>
+					<!-- 
+						 paid attribute should have three types of values:
+						 true, false, unknown
+					-->
+					<paid paid="true">30000 元/月</paid>
+					<applied>3</applied>
+				</position>
+				<position name="演算法實習生" amount="3">
+					<requirements>
+						<requirement>熟悉演算法</requirement>
+					</requirements>
+					<about>撰寫演算法模擬程式及部分prototype</about>
+					<location>台中</location>
+					<paid paid="false"></paid>
+					<applied>27</applied>
+				</position>
+				<position name="新媒體策展實習生" amount="4">
+					<requirements>
+						<requirement>了解新媒體</requirement>
+					</requirements>
+					<about>觀察週遭主題、編排出自己的獨立觀點，吸引特定族群的興趣</about>
+					<location>台東</location>
+					<paid paid="unknown"></paid>
+					<applied>3000</applied>
+				</position>
+			</positions>
+			<logs>
+				<!--use milliseconds as time account name as author-->
+				<log time="1462945639.55" author="Deadpool">
+					<time>yesterday</time>
+					<text>我要應徵閃靈主唱</text>
+					<files>
+						<images>http://images-cdn.moviepilot.com/images/c_fill,h_574,w_929/t_mp_quality/ss9ov2xn3821hfzwl2r5/cable-is-confirmed-to-appear-in-deadpool-2-but-what-about-wolverine-could-deadpool-2-831436.jpg</images>
+						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
+					</files>
+				</log>
+				<log time="1462946536.2" author="Daniel">
+					<time>tomorrow</time>
+					<text>Stop it</text>
+					<file>
+						<images>http://imgur.com/gallery/3LSP7oM</images>
+					</file>
 				</log>
 			</logs>
 		</year>

@@ -1,0 +1,48 @@
+<year year="2015" owner="Daniel">
+			<positions>
+				<!-- 
+					 name should be the name of that position
+					 amount should be a number of how many people is the company 
+					 looking for, if unknown, input a number smaller than 0
+				-->
+				<position name="國小英語科文字編輯" amount="1">
+					<requirements>
+						<requirement>英文要精通</requirement>
+					</requirements>
+					<about>協助國小教科書與參考書英語科編輯校對工作。</about>
+					<location>台北</location>
+					<!-- 
+						 paid attribute should have three types of values:
+						 true, false, unknown
+					-->
+					<paid paid="unknown"></paid>
+					<applied>10</applied>
+				</position>
+				<position name="華語文教材行銷企畫" amount="1">
+					<requirements>
+						<requirement>華文要精通</requirement>
+					</requirements>
+					<about>協助海外華語文教材推廣作業。</about>
+					<location>台北</location>
+					<paid paid="unknow"></paid>
+					<applied>7</applied>
+				</position>
+			</positions>
+			<logs>
+				<!--use milliseconds as time account name as author-->
+				<log time="1462942450.54" author="Daniel">
+					<time>today</time>
+					<text>測試訊息第一條</text>
+					<files>
+						<images>http://imgur.com/gallery/mGJI4WY</images>
+						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
+					</files>
+				</log>
+				<log time="1462943303.21" author="Deadpool">
+					<text>Time make make some chimi f**king changas</text>
+					<file>
+						<images>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</images>
+					</file>
+				</log>
+			</logs>
+		</year>

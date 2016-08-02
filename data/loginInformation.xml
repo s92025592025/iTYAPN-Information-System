@@ -4,5 +4,12 @@
 	<accountInfo>
 		<name>Daniel</name>
 		<password>a</password>
+		<displayName>Daniel W.</displayName>
+	</accountInfo>
+
+	<accountInfo>
+		<name>Deadpool</name>
+		<password>d</password>
+		<displayName>Wade</displayName>
 	</accountInfo>
 </accounts>

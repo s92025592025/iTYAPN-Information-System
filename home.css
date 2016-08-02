@@ -1,0 +1,20 @@
+fieldset {
+	margin-top: 20px;
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+table {
+	width: 100%; 
+}
+
+th, td {
+	padding-left: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+tr {
+	background-color: white;
+}
