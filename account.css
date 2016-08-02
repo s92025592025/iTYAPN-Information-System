@@ -1,4 +1,4 @@
-form {
+#change_pw {
 	margin-top: 20px;
 }
 
@@ -6,6 +6,10 @@ label {
 	display: block;
 }
 
-input {
-	background-color: red;
+.error {
+	background-color: #DA4167;
+}
+
+.warning {
+	color: red;
 }
