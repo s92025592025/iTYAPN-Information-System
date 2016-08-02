@@ -12,7 +12,10 @@
 			alert("Re-enter not the same");
 		}else if(document.getElementById("old_pw").textValue.length == 0 ||
 					document.getElementById("new_pw").textValue.length = 0 ||
-					document.getElementById("re_enter_pw").textValue == 0){}else{
+					document.getElementById("re_enter_pw").textValue == 0){
+			// if any of the input is blank
+			
+		}else{
 			var request = new XMLHttpRequest();
 		}
 	}

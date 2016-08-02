@@ -5,3 +5,7 @@ form {
 label {
 	display: block;
 }
+
+input {
+	background-color: red;
+}
