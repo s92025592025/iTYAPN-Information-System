@@ -14,4 +14,5 @@
     <li>2016/05/08: login on page successful</li>
     <li>2016/05/10: make sure all the essential details</li>
     <li>2016/07/16: move account storage from XML to DB</li>
+    <li>2016/08/02: fiished home dashboard layout, can display the tickets, but still can't see the details</li>
   </ul>
