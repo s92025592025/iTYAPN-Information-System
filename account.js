@@ -10,7 +10,7 @@
 	function changePw(){
 		if(document.getElementById("new_pw").value != 
 			document.getElementById("re_enter_pw").value){
-			// if new password can't be entered the same twice
+			// if new password canW't be entered the same twice
 
 			// make the boxes red
 			document.getElementById("new_pw").classList.add("error");
@@ -31,10 +31,12 @@
 			document.getElementById("change_pw_warning").innerHTML = "";
 			document.getElementById("old_pw_warning").innerHTML = "";
 
-			var request = new XMLHttpRequest();
+			AJAXCall(document.getElementById("old_pw").value, document.getElementById("new_pw").value);
 		}
 	}
 
+	// pre: when ever the user is trying to submit something
+	// post: check if the user has left anything blank when they submit
 	function checkBlankInput(block){
 		var inputs = document.querySelectorAll(block + " input");
 		for(var i = 0; i < inputs.length; i++){
@@ -44,6 +46,26 @@
 				inputs[i].classList.remove("error");
 			}
 		}
+	}
+
+	// 
+	function AJAXCall(oldPw, newPw){
+		var request = new XMLHttpRequest();
+
+		request.onload = function(){
+			var response = request.responseText;
+
+			if(response == "TRUE"){
+				alert("Password Change Successful");
+				window.location = account.php;
+			}else{
+				document.getElementById("old_pw_warning").innerHTML = response;
+			}
+		};
+
+		request.open("POST", "data/changePw.php", false);
+		request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		request.send("old=" + oldPw + "&new=" + newPw);
 	}
 
 })();
