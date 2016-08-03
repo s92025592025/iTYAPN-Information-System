@@ -65,7 +65,7 @@
 
 		request.open("POST", "data/changePw.php", false);
 		request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		request.send("old=" + oldPw + "&new=" + newPw);
+		request.send(encodeURI("old=" + oldPw + "&new=" + newPw));
 	}
 
 })();
