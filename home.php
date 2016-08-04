@@ -46,7 +46,7 @@
 	}
 
 	function myTickets(){
-		$conn = connectToDB();
+		$conn = connectToDB("data\dbInformation.txt");
 
 		$user = $conn->quote($_SESSION["user"]);
 		$year = $conn->quote(date("Y"));
@@ -65,7 +65,7 @@
 	}
 
 	function activeTickets(){
-		$conn = connectToDB();
+		$conn = connectToDB("data\dbInformation.txt");
 
 		$user = $conn->quote($_SESSION["user"]);
 		$year = $conn->quote(date("Y"));
@@ -84,7 +84,7 @@
 	}
 
 	function pastTickets(){
-		$conn = connectToDB();
+		$conn = connectToDB("data\dbInformation.txt");
 
 		$year = $conn->quote(date("Y"));
 

@@ -20,14 +20,14 @@
 <?php # this is a function block
 
 	function originPwCheck($old){
-		$conn = connectToDB();
+		$conn = connectToDB("dbInformation.txt");
 
 		$user = $conn->quote($_SESSION["user"]);
 		$old = $conn->quote(trim($old));
 
-		return true; /*rowCount($conn->query("SELECT COUNT(*)
+		return $conn->query("SELECT COUNT(*)
 										FROM dbo.user_data
-										WHERE [user] = $user AND [password] = $old")) == 1;*/
+										WHERE [user] = $user AND [password] = $old")->fetchColumn() == 1;
 	}
 
 	function patternCheck($new){

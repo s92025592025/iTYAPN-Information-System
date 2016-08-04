@@ -55,9 +55,9 @@
 		request.onload = function(){
 			var response = request.responseText;
 
-			if(response == "TRUE"){
+			if(response.trim() == "TRUE"){
 				alert("Password Change Successful");
-				window.location = account.php;
+				window.location = "account.php";
 			}else{
 				document.getElementById("old_pw_warning").innerHTML = response;
 			}
