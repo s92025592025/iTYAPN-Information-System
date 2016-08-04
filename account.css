@@ -1,7 +1,15 @@
-form {
+#change_pw {
 	margin-top: 20px;
 }
 
 label {
 	display: block;
+}
+
+.error {
+	background-color: #DA4167;
+}
+
+.warning {
+	color: red;
 }
