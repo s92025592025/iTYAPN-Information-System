@@ -13,6 +13,7 @@
 			// if new password canW't be entered the same twice
 
 			// make the boxes red
+			document.getElementById("old_pw").classList.remove("error");
 			document.getElementById("new_pw").classList.add("error");
 			document.getElementById("re_enter_pw").classList.add("error");
 			// show error message
@@ -55,9 +56,15 @@
 		request.onload = function(){
 			var response = request.responseText;
 
-			if(response.trim() == "TRUE"){
+			if(response.trim() == "TRUE"){ // if password changed successfully
 				alert("Password Change Successful");
 				window.location = "account.php";
+			}else if(response.trim() == "Old password not correct"){ // if the old password is not right
+				// show warning
+				document.getElementById("old_pw_warning").innerHTML = response.trim();
+				document.getElementById("change_pw_warning").innerHTML = "";
+				document.getElementById("new_pw").classList.remove("error");
+				document.getElementById("re_enter_pw").classList.remove("error");
 			}else{
 				document.getElementById("old_pw_warning").innerHTML = response;
 			}
