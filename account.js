@@ -62,6 +62,7 @@
 			}else if(response.trim() == "Old password not correct"){ // if the old password is not right
 				// show warning
 				document.getElementById("old_pw_warning").innerHTML = response.trim();
+				document.getElementById("old_pw").classList.add("error");
 				document.getElementById("change_pw_warning").innerHTML = "";
 				document.getElementById("new_pw").classList.remove("error");
 				document.getElementById("re_enter_pw").classList.remove("error");

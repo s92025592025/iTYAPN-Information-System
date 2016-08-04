@@ -10,7 +10,6 @@
 	if(!isset($_POST["old"]) || !isset($_POST["new"])){
 		print "Missing Parameter";
 	}else{
-
 		// check if the old password match the current one
 		if(!originPwCheck($_POST["old"])){
 			print "Old password not correct";
@@ -18,10 +17,12 @@
 		}
 
 		// check if the new password macth the required strength
+		if(!preg_match("/^[a-zA-z0-9!@#$%^&*]{6,}$/", $_POST["new"])){
 			print "Please make your password at least 6 digit long, consist of alphabets(case-sensitive),numbers, or special symbols like !@#$%^&*";
 			die();
 		}
 
+		print passwordChange($_POST["old"], $_POST["new"]);
 	}
 
 ?>
@@ -48,8 +49,8 @@
 		$conn = connectToDB("dbInformation.txt");
 
 		$user = $conn->quote($_SESSION["user"]);
-		$old = $conn->quote(trim($old));
-		$new = $conn->quote(trim($new));
+		$old = $conn->quote($old);
+		$new = $conn->quote($new);
 
 		$query = $conn->query("UPDATE dbo.user_data
 								SET [password]=$new
