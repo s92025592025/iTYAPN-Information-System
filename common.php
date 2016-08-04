@@ -27,7 +27,7 @@
 								<li><a href="account.php">Account</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								<li class="active"><a href="data/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 							</ul>
 						</div>
 					</nav>
