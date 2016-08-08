@@ -9,7 +9,7 @@
 	if(!isset($_GET["id"])){
 		header("Location: home.php");
 	}else{
-		HTMLHeader();
+		HTMLHeader("Ticket #".$_GET["id"], "ticket.css", "");
 
 		HTMLFooter();
 	}
