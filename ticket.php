@@ -6,7 +6,7 @@
 
 	session_start();
 
-	if(!isset($_GET["id"])){
+	if(!isset($_GET["id"]) || !checkTicket($_GET["id"])){
 		header("Location: home.php");
 		die();
 	}else{
@@ -22,15 +22,44 @@
 									JOIN dbo.user_data ON user_id = dbo.user_data.id
 									WHERE dbo.ticket.id LIKE $ticketId");
 
-		$info = $ticketInfo->fetchColumn();
+		$info = "";
+
+		foreach($ticketInfo as $ticket){
+			$info = $ticket;
+		}
+
 		?>
 
 		<div id="main" class="container">
-			<h1><?=$info["phone"]?></h1>
+			<h1><?=$info["c_name"]?></h1>
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-success">Comment</button>
+				<button type="button" class="btn btn-success">Basics</button>
+				<button type="button" class="btn btn-success">Status</button>
+			</div>
 		</div>
 
 		<?php
 		HTMLFooter();
+	}
+
+?>
+
+<?php
+
+	# This is a function block
+	
+	# pre: when request to see a detail of a ticket
+	# post: check if the ticket exists
+	function checkTicket($id){
+		$conn = connectToDB("data/dbInformation.txt");
+
+		$id = $conn->quote($id);
+
+		return $conn->query("SELECT COUNT(*)
+							FROM dbo.ticket
+							WHERE id LIKE $id")->fetchColumn() == 1;
 	}
 
 ?>

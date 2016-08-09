@@ -1,0 +1,9 @@
+#main {
+	position: relative;
+}
+
+.btn-group {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
