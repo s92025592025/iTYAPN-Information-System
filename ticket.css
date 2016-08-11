@@ -11,3 +11,28 @@
 .caret {
 	color: #fff;
 }
+
+.info {
+	width: 46%;
+	margin-right: 4%;
+	float: left;
+}
+
+.panel-heading {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+}
+
+.panel-content {
+	padding: 5px;
+}
+
+.row {
+	clear: right;
+	overflow: hidden;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
