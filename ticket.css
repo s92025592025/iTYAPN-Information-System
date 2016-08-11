@@ -2,8 +2,12 @@
 	position: relative;
 }
 
-.btn-group {
+#status_control {
 	position: absolute;
 	right: 0px;
 	top: 0px;
+}
+
+.caret {
+	color: #fff;
 }

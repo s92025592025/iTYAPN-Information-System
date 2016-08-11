@@ -33,10 +33,26 @@
 		<div id="main" class="container">
 			<h1><?=$info["c_name"]?></h1>
 
-			<div class="btn-group">
+			<div id="status_control" class="btn-group">
 				<button type="button" class="btn btn-success">Comment</button>
-				<button type="button" class="btn btn-success">Basics</button>
-				<button type="button" class="btn btn-success">Status</button>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Basics <span class="caret"></span></button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">People</a></li>
+						<li><a href="#">Positions</a></li>
+						<li><a href="#">Contacts</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
+					<ul class="dropdown-menu" role="menu">
+						<li>Delete</li>
+						<li>Stalled</li>
+						<li>Comment</li>
+						<li>Fail</li>
+						<li>Success</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
