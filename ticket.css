@@ -33,6 +33,13 @@
 	overflow: hidden;
 }
 
+.maps {
+	width: 94%;
+	height: 94%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 h1 {
 	margin-bottom: 20px;
 }

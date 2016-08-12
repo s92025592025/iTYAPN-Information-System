@@ -64,7 +64,7 @@
 							<li>英文名稱: <?=$info["e_name"]?></li>
 							<li>電話號碼: <?=nullTester($info["phone"])?></li>
 							<li>電子信箱: <?=nullTester($info["email"])?></li>
-							<li>聯絡地址: <?=nullTestrer($info["address"])?></li>
+							<li>聯絡地址: <?=$info["address"]?></li>
 							<li>聯絡人:  <?=nullTester($info["contactee"])?></li>
 							<li>負責人: <?=$info["user"]?></li>
 						</ul>
@@ -73,7 +73,7 @@
 				<div class="info panel panel-primary">
 					<div class="panel-heading">位置</div>
 					<div class="panel-body">
-						<img class="maps" src="" />
+						<img class="maps" src=<?="http://maps.googleapis.com/maps/api/staticmap?center=".str_replace(" ", "+", $info["address"])."&markers=color:red%7Clabel=@%7C".str_replace(" ", "+", $info["address"])."&zoom=13&size=300x250&maptype=roadmap&key=".trim(file("data/googleAPI.txt")[0])?> />
 					</div>
 				</div>
 			</div>
