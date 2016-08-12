@@ -59,15 +59,21 @@
 				<div class="info panel panel-primary">
 					<div class="panel-heading">詳細資料</div>
 					<div class="panel-body">
-						What is Lorem Ipsum?
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+						<ul>
+							<li>公司名稱: <?=$info["c_name"]?></li>
+							<li>英文名稱: <?=$info["e_name"]?></li>
+							<li>電話號碼: <?=nullTester($info["phone"])?></li>
+							<li>電子信箱: <?=nullTester($info["email"])?></li>
+							<li>聯絡地址: <?=nullTestrer($info["address"])?></li>
+							<li>聯絡人:  <?=nullTester($info["contactee"])?></li>
+							<li>負責人: <?=$info["user"]?></li>
+						</ul>
 					</div>
 				</div>
 				<div class="info panel panel-primary">
 					<div class="panel-heading">位置</div>
 					<div class="panel-body">
-						What is Lorem Ipsum?
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+						<img class="maps" src="" />
 					</div>
 				</div>
 			</div>
@@ -94,6 +100,14 @@
 		return $conn->query("SELECT COUNT(*)
 							FROM dbo.ticket
 							WHERE id LIKE $id")->fetchColumn() == 1;
+	}
+
+	function nullTester($data){
+		if($data == null || $data == "NULL"){
+			return "none";
+		}
+
+		return $data;
 	}
 
 ?>
