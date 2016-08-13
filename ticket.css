@@ -8,6 +8,10 @@
 	top: 0px;
 }
 
+#positions_panel {
+	width: 100%;
+}
+
 .caret {
 	color: #fff;
 }

@@ -31,7 +31,6 @@
 			<logs>
 				<!--use milliseconds as time account name as author-->
 				<log time="1462942450.54" author="Daniel">
-					<time>today</time>
 					<text>測試訊息第一條</text>
 					<files>
 						<images>http://imgur.com/gallery/mGJI4WY</images>

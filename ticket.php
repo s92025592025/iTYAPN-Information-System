@@ -78,6 +78,15 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div id="positions_panel" class="panel panel-success">
+					<div class="panel-heading">實習職位 Internship Position</div>
+					<div class="panel-body">
+						<?=positions($_GET["id"])?>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<?php
@@ -102,12 +111,37 @@
 							WHERE id LIKE $id")->fetchColumn() == 1;
 	}
 
+	# pre: when get a row of data in SQL that might be null
+	# post: return "NONE" when the data from SQL is null
 	function nullTester($data){
 		if($data == null || $data == "NULL"){
 			return "none";
 		}
 
 		return $data;
+	}
+
+	# pre: when need to show the positions provided by the company
+	# post: if there is no positions provided yet, show the message, otherwise show
+	#		detailed information about the position
+	function positions($id){
+		$data = loadXML($id);
+
+		$positions = $data->getElementsByTagName("position");
+		if($position->length == 0){ # if no position is provided yet
+			?>
+				<h2>No position is provided now.</h2>
+			<?php
+		}else{}
+	}
+
+	# pre: when request data from xml data
+	# post: returns a DOMDocument object
+	function loadXML($id){
+		$xml = new DOMDocument();
+		$xml->load("tickets/$id.xml");
+
+		return $xml;
 	}
 
 ?>
