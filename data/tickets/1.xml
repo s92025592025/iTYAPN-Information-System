@@ -16,6 +16,7 @@
 						 true, false, unknown
 					-->
 					<paid paid="unknown"></paid>
+					<other>如果有其他福利請寫在這</other>
 					<applied>10</applied>
 				</position>
 				<position name="華語文教材行銷企畫" amount="1">
@@ -25,6 +26,7 @@
 					<about>協助海外華語文教材推廣作業。</about>
 					<location>台北</location>
 					<paid paid="unknow"></paid>
+					<other></other>
 					<applied>7</applied>
 				</position>
 			</positions>

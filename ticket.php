@@ -133,7 +133,44 @@
 				<h2>No Position is Provided Now.</h2>
 			<?php
 		}else{
-
+			foreach($positions as $position){
+				?>
+					<div class="info panel panel-info">
+						<div class="panel-heading"><?=$position->getAttribute("name")?></div>
+						<div class="panel-body">
+							<ul>
+								<li>招募人數: <?=$position->getAttribute("amount")?> 名</li>
+								<li>工作內容: <?=$position->getElementsByTagName("about")->item(0)->nodeValue?></li>
+								<li>實習地點: <?=$position->getElementsByTagName("location")->item(0)->nodeValue?></li>
+								<li>
+									應徵要求:
+										<ol>
+											<?php
+												$requirements = $position->getElementsByTagName("requirement");
+												foreach($requirements as $requirement){
+													?>
+														<li><?=$requirement->nodeValue?></li>
+													<?php
+												}
+											?>
+										</ol>
+								</li>
+								<li>實習薪資: <?php
+									$salary = $position->getElementsByTagName("paid")->item(0);
+									if($salary->getAttribute("paid") == "true"){
+										print $salary->nodeValue;
+									}else if($salary->getAttribute("paid") == "false"){
+										print "不給薪";
+									}else{
+										print $salary->getAttribute("paid");
+									}
+								?></li>
+								<li>備　註　: <?=$position->getElementsByTagName("other")->item(0)->nodeValue?></li>
+							</ul>
+						</div>
+					</div>
+				<?php
+			}
 		}
 	}
 
