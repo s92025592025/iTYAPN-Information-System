@@ -8,7 +8,7 @@
 	top: 0px;
 }
 
-#positions_panel {
+.full_panel {
 	width: 100%;
 }
 
@@ -26,10 +26,6 @@
 	padding-top: 3px;
 	padding-bottom: 3px;
 	font-weight: bold;
-}
-
-.panel-content {
-	padding: 5px;
 }
 
 .row {

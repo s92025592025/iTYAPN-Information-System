@@ -79,11 +79,18 @@
 			</div>
 
 			<div class="row">
-				<div id="positions_panel" class="panel panel-success">
+				<div class="full_panel panel panel-success">
 					<div class="panel-heading">實習職位 Internship Position</div>
 					<div class="panel-body">
 						<?=positions($_GET["id"])?>
 					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="full_panel panel panel-danger">
+					<div class="panel-heading">紀錄 Comments</div>
+					<div class="panel-body"><?=comments($_GET["id"])?></div>
 				</div>
 			</div>
 
@@ -182,5 +189,9 @@
 
 		return $xml;
 	}
+
+	# pre: when need to show the comments made by the users
+	# post: show all the comments by time
+	function comments($id){}
 
 ?>
