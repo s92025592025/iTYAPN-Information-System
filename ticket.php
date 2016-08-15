@@ -125,21 +125,23 @@
 	# post: if there is no positions provided yet, show the message, otherwise show
 	#		detailed information about the position
 	function positions($id){
-		$data = loadXML($id);
+		$data = loadData($id);
 
 		$positions = $data->getElementsByTagName("position");
-		if($position->length == 0){ # if no position is provided yet
+		if($positions->length <= 0){ # if no position is provided yet
 			?>
-				<h2>No position is provided now.</h2>
+				<h2>No Position is Provided Now.</h2>
 			<?php
-		}else{}
+		}else{
+
+		}
 	}
 
 	# pre: when request data from xml data
 	# post: returns a DOMDocument object
-	function loadXML($id){
+	function loadData($id){
 		$xml = new DOMDocument();
-		$xml->load("tickets/$id.xml");
+		$xml->load("data/tickets/".trim($id).".xml");
 
 		return $xml;
 	}
