@@ -31,15 +31,15 @@
 				</position>
 			</positions>
 			<logs>
-				<!--use milliseconds as time account name as author-->
-				<log time="1462942450.54" author="Daniel">
+				<!--use milliseconds as time account name as author, and status should only have "Stalled", "Comment", "Success", or "Fail"-->
+				<log time="1462942450.54" author="Daniel" status="Comment">
 					<text>測試訊息第一條</text>
 					<files>
 						<images>http://imgur.com/gallery/mGJI4WY</images>
-						<file>https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
+						<file name="python.pdf">https://drive.google.com/file/d/0B_K-ts3WpRk3Qkdmek1NdTVZd2M/view?usp=sharing</file>
 					</files>
 				</log>
-				<log time="1462943303.21" author="Deadpool">
+				<log time="1462943303.21" author="Deadpool" status="Comment">
 					<text>Time make make some chimi f**king changas</text>
 					<file>
 						<images>http://static4.businessinsider.com/image/56bfeafd2e52651c008b7287/deadpool-exceeds-all-expectations-with-a-record-breaking-135-million-opening-weekend--and-its-not-slowing-down.jpg</images>

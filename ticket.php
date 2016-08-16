@@ -192,6 +192,52 @@
 
 	# pre: when need to show the comments made by the users
 	# post: show all the comments by time
-	function comments($id){}
+	function comments($id){
+		$xml = loadData($id);
+
+		$logs = $xml->getElementsByTagName("log");
+
+		foreach($logs as $log){
+			?>
+				<div class="comment panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="log_status col-sm-1"><?=$log->getAttribute("status")?></div>
+							<div class="log_status_info col-sm-11">
+								<ul>
+									<li>From: <?=$log->getAttribute("author")?></li>
+									<li>Time: <?=date("d-M-Y D H:i:s a", $log->getAttribute("time"))?></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<p><?=$log->getElementsByTagName("text")->item(0)->nodeValue?></p>
+						<hr />
+						<div>
+							<p class="log_file_tags">image</p>
+							<?php
+								$imgs = $log->getElementsByTagName("images");
+								foreach($imgs as $img){
+									?>
+										<img src=<?=$img->nodeValue?> />
+									<?php
+								}
+							?>
+							<p class="log_file_tags">files</p>
+							<?php
+								$files = $log->getElementsByTagName("file");
+								foreach($files as $file){
+									?>
+										<a class="log_file_link" target="_blank" href=<?=$file->nodeValue?>><?=$file->getAttribute("name")?></a>
+									<?php
+								}
+							?>
+						</div>
+					</div>
+				</div>
+			<?php
+		}
+	}
 
 ?>

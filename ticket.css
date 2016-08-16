@@ -8,6 +8,10 @@
 	top: 0px;
 }
 
+#log_data_left {
+	background-color: brown;
+}
+
 .full_panel {
 	width: 100%;
 }
@@ -40,6 +44,30 @@
 	margin-right: auto;
 }
 
+.comment {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.log_status {
+	margin-top: 20px;
+}
+
+.log_status_info {
+	font-weight: normal;
+}
+
+.log_file_tags {
+	color: gray;
+	font-size: 10pt;
+	margin: 0px;
+}
+
+.log_file_link {
+	margin-left: 30px;
+}
+
 h1 {
 	margin-bottom: 20px;
 }
@@ -51,4 +79,10 @@ ul {
 h2 {
 	text-align: center;
 	font-weight: bold;
+}
+
+img {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
