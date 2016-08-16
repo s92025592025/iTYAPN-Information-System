@@ -1,0 +1,88 @@
+#main {
+	position: relative;
+}
+
+#status_control {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+#log_data_left {
+	background-color: brown;
+}
+
+.full_panel {
+	width: 100%;
+}
+
+.caret {
+	color: #fff;
+}
+
+.info {
+	width: 46%;
+	margin-right: 4%;
+	float: left;
+}
+
+.panel-heading {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+}
+
+.row {
+	clear: right;
+	overflow: hidden;
+}
+
+.maps {
+	width: 94%;
+	height: 94%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.comment {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.log_status {
+	margin-top: 20px;
+}
+
+.log_status_info {
+	font-weight: normal;
+}
+
+.log_file_tags {
+	color: gray;
+	font-size: 10pt;
+	margin: 0px;
+}
+
+.log_file_link {
+	margin-left: 30px;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+h2 {
+	text-align: center;
+	font-weight: bold;
+}
+
+img {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}

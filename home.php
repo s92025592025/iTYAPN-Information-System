@@ -37,7 +37,7 @@
 			<?php
 				foreach($tickets as $ticket){
 					?>
-						<tr><td><?=$ticket["id"]?></td><td><?=$ticket["c_name"]?></td><td><?=$ticket["user"]?></td><td><?=$ticket["status"]?></td></tr>
+						<tr><td><?=$ticket["id"]?></td><td><a class="ticket_a" href=<?="ticket.php?id=".$ticket["id"]?>><?=$ticket["c_name"]?></a></td><td><?=$ticket["user"]?></td><td><?=$ticket["status"]?></td></tr>
 					<?php
 				}
 			?>

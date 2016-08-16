@@ -18,3 +18,11 @@ th, td {
 tr {
 	background-color: white;
 }
+
+.ticket_row:hover {
+	background-color: gray;
+}
+
+.ticket_a {
+	color: black;
+}
