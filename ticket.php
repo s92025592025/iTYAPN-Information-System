@@ -35,7 +35,7 @@
 
 			<div id="status_control" class="btn-group">
 				<button type="button" class="btn btn-success">Comment</button>
-				<div class="btn-group">
+				<div class="btn-group dropdown">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Basics <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">People</a></li>
@@ -43,7 +43,7 @@
 						<li><a href="#">Contacts</a></li>
 					</ul>
 				</div>
-				<div class="btn-group">
+				<div class="btn-group dropdown">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li>Delete</li>

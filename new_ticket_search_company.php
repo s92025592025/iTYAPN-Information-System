@@ -15,9 +15,17 @@
 			<form role="form" class="form-inline">
 				<div class="form-group">
 					<input type="search" list="companies" class="form-control" id="search" placeholder="Search By Typing in Here" />
-					<button type="search" class="btn btn-success">GO!</button>
+					<button type="search" id="search_btn" class="btn btn-success">GO!</button>
 				</div>
 			</form>
+
+			<div id="search_result" class="info_panel" style="display: none">
+				<div class="panel panel-default">
+					<div class="panel-heading">搜尋結果 Search Results</div>
+					<div class="panel-body"></div>
+				</div>
+			</div>
+
 		</div>
 
 	<?php
