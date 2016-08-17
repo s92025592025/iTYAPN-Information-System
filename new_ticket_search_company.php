@@ -14,8 +14,7 @@
 
 			<form role="form" class="form-inline">
 				<div class="form-group">
-					<input type="search" class="form-control" id="search" placeholder="Search By Typing in Here" />
-					<datalist id="companies"></datalist>
+					<input type="search" list="companies" class="form-control" id="search" placeholder="Search By Typing in Here" />
 					<button type="search" class="btn btn-success">GO!</button>
 				</div>
 			</form>

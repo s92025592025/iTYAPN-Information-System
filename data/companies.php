@@ -40,21 +40,28 @@
 	# pre: when the user input a company's chinese or english name
 	# post: returns a list of companys that may matches the user wants
 	function companyLists($key){
-		$conn = connectToDB("dbInformation.txt");
-		$key = $conn->quote("%$key%");
-		$names = $conn->query("SELECT c_name, [id]
-								FROM dbo.company_list
-								WHERE c_name LIKE N$key OR e_name LIKE N$key OR abbre LIKE N$key");
-
 		$xml = new DOMDocument();
 		$companies = $xml->createElement("companies");
 
-		foreach($names as $name){
-			$company = $xml->createElement("company");
-			$company->setAttribute("c_name", $name["c_name"]);
-			$company->setAttribute("id", $name["id"]);
+		if(strlen(trim($key)) > 0){
+			$conn = connectToDB("dbInformation.txt");
+			$key = $conn->quote("%$key%");
+			$names = $conn->query("SELECT c_name, e_name, [id], [address], [email], 
+										[phone]
+									FROM dbo.company_list
+									WHERE c_name LIKE N$key OR e_name LIKE N$key OR abbre LIKE N$key");
 
-			$companies->appendChild($company);
+			foreach($names as $name){
+				$company = $xml->createElement("company");
+				$company->setAttribute("id", $name["id"]);
+				$company->setAttribute("c_name", $name["c_name"]);
+				$company->setAttribute("e_name", $name["e_name"]);
+				$company->setAttribute("address", $name["address"]);
+				$company->setAttribute("phone", $name["phone"]);
+				$company->setAttribute("email", $name["email"]);
+
+				$companies->appendChild($company);
+			}
 		}
 
 		$xml->appendChild($companies);
