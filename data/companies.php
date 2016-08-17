@@ -1,4 +1,6 @@
 <?php
+	include("../common.php");
+
 	/*
 	** Modes: company lists, company by year list, detailed list, owner list, user list
 	*/
@@ -6,10 +8,10 @@
 	if(isset($_GET["mode"])){
 		switch($_GET["mode"]){
 			case "companyLists":
-				companyLists();
+				companyLists($_GET["key"]);
 				break;
 			case "yearLists":
-				yearLists($_GET["year"]);
+				#code...
 				break;
 			case "detailed":
 				# code...
@@ -32,89 +34,72 @@
 ?>
 
 <?php
-# php block for functions
-
-function companyLists(){
-	$xml = loadData();
-	$output = new DOMDocument();
-	$names = $output->createElement("names");
-	$companies = $xml->getElementsByTagName("company");
-	foreach ($companies as $company) {
-		# set up the names of the company 
-		$name = $output->createElement("name");
-		$chineseName = $output->createElement("chineseName");
-		$engName = $output->createElement("engName");
-		$chineseName->appendChild($output->createTextNode($company->getElementsByTagName("chineseName")->item(0)->nodeValue));
-		$engName->appendChild($output->createTextNode($company->getElementsByTagName("engName")->item(0)->nodeValue));
-		$name->appendChild($chineseName);
-		$name->appendChild($engName);
-		$names->appendChild($name);
-	}
-	$output->appendChild($names);
-
-	header("Content-type: text/xml");
-	print($output->saveXML());
-}
-
-function yearLists($year){
-	if($year == null){
-		header("HTTP/1.1 400 Please specify a year");
-		die("Please specify a year");
-	}
-
-	$xml = loadData();
-	$output = new DOMDocument();
-	$sameYear = getSameYear($year);
-	$data = $output->createElement("data");
-	$data->setAttribute("year", $year); # make the returned year
-	foreach($sameYear as $eachNode){
-		$company = $output->createElement("company");
-
-		# add name to company
-		$names = $output->createElement("names");
-			$chineseName = $output->createElement("chineseName");
-			$engName = $output->createElement("engName");
-		$chineseName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("chineseName")->item(0)->nodeValue));
-		$engName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("engName")->item(0)->nodeValue));
-		$names->appendChild($chineseName);
-		$names->appendChild($engName);
-		$company->appendChild($names);
-
-		# add position information of that year
-
-		# put the company when the data is collect
-		$data->appendChild($company);
-	}
-	#put everything back
-	$output->appendChild($data);
-
-	#output
-	header("Content-type: text/xml");
-	print($output->saveXML());
-}
+	# php block for functions
 
 
-# pre: should have companyData.xml file
-# post: will return the entire companyData.xml file by a xml structure
-function loadData(){
-	$xml = new DOMDocument();
-	$xml->load("companyData.xml");
+	# pre: when the user input a company's chinese or english name
+	# post: returns a list of companys that may matches the user wants
+	function companyLists($key){
+		$conn = connectToDB("dbInformation.txt");
+		$key = $conn->quote("%$key%");
+		$names = $conn->query("SELECT c_name, [id]
+								FROM dbo.company_list
+								WHERE c_name LIKE N$key OR e_name LIKE N$key OR abbre LIKE N$key");
 
-	return $xml;
-}
+		$xml = new DOMDocument();
+		$companies = $xml->createElement("companies");
 
-# pre: should enter a valid year in western style to year
-# post: returns a list on year element what occurs in the year passed in
-function getSameYear($year){
-	$xml = loadData();
-	$years = array();
-	foreach($xml->getElementsByTagName("year") as $oneyear){
-		if($oneyear->getAttribute("year") == $year){
-			$years[] = $oneyear;
+		foreach($names as $name){
+			$company = $xml->createElement("company");
+			$company->setAttribute("c_name", $name["c_name"]);
+			$company->setAttribute("id", $name["id"]);
+
+			$companies->appendChild($company);
 		}
+
+		$xml->appendChild($companies);
+
+		header("Content-type: text/xml");
+		print $xml->saveXML();
 	}
 
-	return $years;
-}
+	/*
+	#need to switch to SQL
+	function yearLists($year){
+		if($year == null){
+			header("HTTP/1.1 400 Please specify a year");
+			die("Please specify a year");
+		}
+
+		$xml = loadData();
+		$output = new DOMDocument();
+		$sameYear = getSameYear($year);
+		$data = $output->createElement("data");
+		$data->setAttribute("year", $year); # make the returned year
+		foreach($sameYear as $eachNode){
+			$company = $output->createElement("company");
+
+			# add name to company
+			$names = $output->createElement("names");
+				$chineseName = $output->createElement("chineseName");
+				$engName = $output->createElement("engName");
+			$chineseName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("chineseName")->item(0)->nodeValue));
+			$engName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("engName")->item(0)->nodeValue));
+			$names->appendChild($chineseName);
+			$names->appendChild($engName);
+			$company->appendChild($names);
+
+			# add position information of that year
+
+			# put the company when the data is collect
+			$data->appendChild($company);
+		}
+		#put everything back
+		$output->appendChild($data);
+
+		#output
+		header("Content-type: text/xml");
+		print($output->saveXML());
+	}*/
 
 ?>

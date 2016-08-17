@@ -11,7 +11,7 @@
 
 	<div class="container">
 		<div>
-			<h1>Welcome, <?=$_SESSION["user"]?> <button type="button" id="new_ticket_btn" class="btn btn-primary">New Tickets</button></h1>
+			<h1>Welcome, <?=$_SESSION["user"]?> <a href="new_ticket_search_company.php"><button type="button" id="new_ticket_btn" class="btn btn-primary">New Tickets</button></a></h1>
 		</div>
 		<fieldset>
 			<legend>My Tickets</legend>
