@@ -14,7 +14,7 @@
 				#code...
 				break;
 			case "detailed":
-				# code...
+				detailed($_GET["id"]);
 				break;
 			case "ownerList":
 				# code...
@@ -70,43 +70,44 @@
 		print $xml->saveXML();
 	}
 
-	/*
-	#need to switch to SQL
-	function yearLists($year){
-		if($year == null){
-			header("HTTP/1.1 400 Please specify a year");
-			die("Please specify a year");
+	function detailed($id){
+		$conn = connectToDB("dbInformation.txt");
+		$id = $conn->quote($id);
+		$details = $conn->query("SELECT TOP(1) [id], c_name, e_name, [address], [email], [phone]
+								FROM dbo.company_list
+								WHERE [id] LIKE $id");
+
+		$xml = new DOMDocument();
+		$root = $xml->createElement("root");
+		$info = $xml->createElement("info");
+		foreach($details as $detail){
+			$company_id = $xml->createElement("id");
+			$c_name = $xml->createElement("c_name");
+			$e_name = $xml->createElement("e_name");
+			$address = $xml->createElement("address");
+			$email = $xml->createElement("email");
+			$phone = $xml->createElement("phone");
+
+			$company_id->appendChild($xml->createTextNode($detail["id"]));
+			$c_name->appendChild($xml->createTextNode($detail["c_name"]));
+			$e_name->appendChild($xml->createTextNode($detail["e_name"]));
+			$address->appendChild($xml->createTextNode($detail["address"]));
+			$email->appendChild($xml->createTextNode($detail["email"]));
+			$phone->appendChild($xml->createTextNode($detail["phone"]));
+
+			$info->appendChild($company_id);
+			$info->appendChild($c_name);
+			$info->appendChild($e_name);
+			$info->appendChild($address);
+			$info->appendChild($email);
+			$info->appendChild($phone);
 		}
 
-		$xml = loadData();
-		$output = new DOMDocument();
-		$sameYear = getSameYear($year);
-		$data = $output->createElement("data");
-		$data->setAttribute("year", $year); # make the returned year
-		foreach($sameYear as $eachNode){
-			$company = $output->createElement("company");
+		$root->appendChild($info);
+		$xml->appendChild($root);
 
-			# add name to company
-			$names = $output->createElement("names");
-				$chineseName = $output->createElement("chineseName");
-				$engName = $output->createElement("engName");
-			$chineseName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("chineseName")->item(0)->nodeValue));
-			$engName->appendChild($output->createTextNode($eachNode->parentNode->getElementsByTagName("engName")->item(0)->nodeValue));
-			$names->appendChild($chineseName);
-			$names->appendChild($engName);
-			$company->appendChild($names);
-
-			# add position information of that year
-
-			# put the company when the data is collect
-			$data->appendChild($company);
-		}
-		#put everything back
-		$output->appendChild($data);
-
-		#output
 		header("Content-type: text/xml");
-		print($output->saveXML());
-	}*/
+		print $xml->saveXML();
+	}
 
 ?>
