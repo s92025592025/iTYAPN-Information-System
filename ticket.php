@@ -14,9 +14,10 @@
 
 		$conn = connectToDB("data/dbInformation.txt");
 		$ticketId = $conn->quote($_GET["id"]);
+
 		$ticketInfo = $conn->query("SELECT TOP(1) [user], c_name, e_name, contactee,
 										dbo.ticket.email, [address], [status],
-										phone
+										dbo.company_list.phone
 									FROM dbo.ticket
 									JOIN dbo.company_list ON company_id = dbo.company_list.id
 									JOIN dbo.user_data ON user_id = dbo.user_data.id
@@ -35,7 +36,7 @@
 
 			<div id="status_control" class="btn-group">
 				<button type="button" class="btn btn-success">Comment</button>
-				<div class="btn-group dropdown">
+				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Basics <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">People</a></li>
@@ -43,7 +44,7 @@
 						<li><a href="#">Contacts</a></li>
 					</ul>
 				</div>
-				<div class="btn-group dropdown">
+				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li>Delete</li>
