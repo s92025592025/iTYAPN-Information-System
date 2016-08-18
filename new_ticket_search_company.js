@@ -65,8 +65,12 @@
 				tr.appendChild(e_name);
 				tr.appendChild(address);
 
+				tr.id = companies[i].getAttribute("id");
+
 				table.appendChild(tr);
 			}
+
+			document.querySelector("#search_result .panel-body").appendChild(table);
 		}else{
 			var h3 = document.createElement("h3");
 			h3.style.color = "red";
