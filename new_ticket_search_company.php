@@ -26,7 +26,7 @@
 				</div>
 			</div>
 
-			<div id="company_detail" style="display: block">
+			<div id="company_detail" style="display: none">
 				<h3>請確認公司資料是否正確</h3>
 				<h4></h4><!-- company chinese name -->
 				<div class="panel panel-info">

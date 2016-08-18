@@ -5,9 +5,11 @@
 	};
 
 	// pre: when the user clicked the search button
-	// post: it will request to companies.php to figure out the company the user is searching for
+	// post: it will request to companies.php to figure out the company the user is searching for,
+	// 		 and hide the details previously displayed
 	function search(){
 		document.getElementById("search_result").style.display = "block";
+		document.getElementById("company_detail").style.display = "none";
 		document.querySelector("#search_result .panel-body").innerHTML = "";
 
 		var request = new XMLHttpRequest();
@@ -66,6 +68,7 @@
 				tr.appendChild(address);
 
 				tr.id = companies[i].getAttribute("id");
+				tr.onclick = showDetails;
 
 				table.appendChild(tr);
 			}
@@ -78,6 +81,44 @@
 
 			document.querySelector("#search_result .panel-body").appendChild(h3);
 		}
+	}
+
+	// pre: when the user clicked the company they are looking for
+	// post: show thw user the details of the company, and prompt to ask if there is 
+	//		 other new information we need to know
+	function showDetails() {
+		document.getElementById("search_result").style.display = "none";
+		document.getElementById("company_detail").style.display = "block";
+
+		// make previous data blank
+		document.querySelector("#company_detail > h4").innerHTML = "";
+		document.getElementById("company_detail_info").innerHTML = "";
+		document.querySelector("#company_map img").src = "";
+		document.getElementById("contactee").value = "";
+		document.getElementById("email").value = "";
+		document.getElementById("phone").value = "";
+
+		var request = new XMLHttpRequest();
+		request.open("GET", "data/companies.php?mode=detailed&id=" + this.id, true);
+		request.onload = details;
+		request.send();
+	}
+
+	function details(){
+		var response = this.responseXML;
+
+		document.querySelector("#company_detail > h4").innerHTML = 
+			response.querySelector("c_name").childNodes[0].nodeValue;
+		document.querySelector("#company_detail > h4").id = 
+			response.querySelector("id").childNodes[0].nodeValue;
+
+		// elements to put in company_detail_info
+		var ul = document.createElement("ul");
+		var c_name = document.createElement("li");
+		var e_name = document.createElement("li");
+		var phone = document.createElement("li");
+		var email = document.createElement("li");
+		var address = document.createElement("li");
 	}
 
 })();
