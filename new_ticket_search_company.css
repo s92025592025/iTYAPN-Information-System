@@ -40,3 +40,9 @@ h4 {
 	font-size: 20pt;
 	font-weight: bold;
 }
+
+#company_detail_info, #company_map {
+	width: 46%;
+	float: left;
+	margin-left: 15px;
+}

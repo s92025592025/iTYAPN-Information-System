@@ -119,6 +119,38 @@
 		var phone = document.createElement("li");
 		var email = document.createElement("li");
 		var address = document.createElement("li");
+
+		c_name.innerHTML = "公司名稱: " + response.querySelector("c_name").childNodes[0].nodeValue;
+		e_name.innerHTML = "Company: " + response.querySelector("e_name").childNodes[0].nodeValue;
+		phone.innerHTML = "連絡電話: " + nodeChecker(response.querySelector("phone"));
+		email.innerHTML = "電子信箱: " + nodeChecker(response.querySelector("email"));
+		address.innerHTML = "公司地址: " + response.querySelector("address").childNodes[0].nodeValue;
+
+		ul.appendChild(c_name);
+		ul.appendChild(e_name);
+		ul.appendChild(phone);
+		ul.appendChild(email);
+		ul.appendChild(address);
+
+		document.getElementById("company_detail_info").appendChild(ul);
+
+		document.querySelector("#company_map img").src = "http://maps.googleapis.com/maps/api/staticmap?center=" +
+				response.querySelector("address").childNodes[0].nodeValue.replace(" ", "+") + 
+				"&markers=color:red%7Clabel=@%7C" + 
+				response.querySelector("address").childNodes[0].nodeValue.replace(" ", "+") + 
+				"&zoom=13&size=300x250&maptype=roadmap&key=AIzaSyCTBKRUc0a4Sltk0XefQWIpXHnOhbLnXW0";
+
+
+	}
+
+	// pre: pass in a data to check if it is null
+	// post: return "none" if it is null, return original data if not
+	function nodeChecker(data){
+		if(data.childNodes.length <= 0){
+			return "none";
+		}
+
+		return data.childNodes[0].nodeValue;
 	}
 
 })();
