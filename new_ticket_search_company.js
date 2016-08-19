@@ -157,8 +157,10 @@
 	// pre: if the company details are displayed
 	// post: check if the user is mising any information before they send our the data
 	function filter(){
+		var input = document.querySelectorAll(".well .form-control");
+		document.getElementById("phone").parentNode.parentNode.classList.remove("has-error");
+
 		if(this.checked){
-			var input = document.querySelectorAll("#data_input > .form_group input");
 			for(var i = 0; i < input.length; i++){
 				input[i].value = "";
 				input[i].disabled = true;
@@ -172,6 +174,51 @@
 			** 	entered, need to check that and mak sure the phone number is entered by a specific format,
 			**	then let the user able the button to send out the data
 			*/
+
+			for(var i = 0; i < input.length; i++){
+				input[i].value = "";
+				input[i].disabled = false;
+				input[i].onkeyup = varifyData;
+			}
+			document.getElementById("send").disabled = true;
+		}
+	}
+
+	function varifyData(){
+		var input = document.querySelectorAll(".well .form-control");
+		var flag = false;
+		for(var i = 0; i < input.length; i++){
+			if(input[i].value.trim().length <= 0){
+				document.getElementById("send").disabled = true;
+			}else{
+				flag = true;
+			}
+		}
+
+
+		if(flag && document.getElementById("phone").value.trim() != ""){
+			var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/
+			flag = reg.test(document.getElementById("phone").value.trim()) &&
+					document.getElementById("phone").value.trim().replace("(", "").replace(")", "").length == 10;
+
+			if(!flag){
+				document.getElementById("phone").parentNode.parentNode.classList.add("has-error");
+				document.getElementById("phone_warning").innerHTML = 
+					"電話輸入格式有誤。 此欄預設為輸入台灣市內電話所用，請依照 \"(區碼)無空格無符號電話號碼\" 的格式輸入，</br>" + 
+					"且區碼及電話號碼加起來應有10碼。 區碼有兩碼以上也請還是照著得到的資料輸入，因為是存在的。 </br>" + 
+					"如有太過特殊的電話號碼，請洽管理員並將此欄空白，稍後還有機會再修改";
+			}else{
+				document.getElementById("phone").parentNode.parentNode.classList.remove("has-error");
+				document.getElementById("phone_warning").innerHTML = "";
+			}
+		}else{
+			document.getElementById("phone").parentNode.parentNode.classList.remove("has-error");
+				document.getElementById("phone_warning").innerHTML = "";
+		}
+
+		if(flag){
+			document.getElementById("send").disabled = false;
+			document.getElementById("send").onclick = extraData;
 		}
 	}
 

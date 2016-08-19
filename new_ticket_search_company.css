@@ -46,3 +46,8 @@ h4 {
 	float: left;
 	margin-left: 15px;
 }
+
+#phone_warning {
+	color: red;
+	margin-top: 10px;
+}
