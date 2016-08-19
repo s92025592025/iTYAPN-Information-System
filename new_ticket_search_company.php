@@ -42,7 +42,7 @@
 				<div class="well">
 					<h4>其他聯絡方式? Other contacts?</h4>
 					<p>除了上述的聯絡方式外，還有其他或指定的聯絡人及聯絡方法嗎?</p>
-					<form class="from-horizontal">
+					<form id="data_input" class="from-horizontal">
 						<div class="checkbox">
 							<label><input id="more_contact" type="checkbox"> 聯絡方法與詳細資料中相同</label>
 						</div>
@@ -70,7 +70,7 @@
 				</div>
 				<div class="from-horizontal">
 					<div class="form-group">
-						<button class="btn btn-warning col-sm-offset-4 col-sm-offset-8">我確定資料都是對的，下一步</button>
+						<button id="send" class="btn btn-warning col-sm-offset-4 col-sm-offset-8" disabled="disabled">我確定資料都是對的，下一步</button>
 					</div>
 				</div>
 			</div>

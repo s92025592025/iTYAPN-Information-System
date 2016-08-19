@@ -2,6 +2,7 @@
 
 	window.onload = function (){
 		document.getElementById("search_btn").onclick = search;
+		document.getElementById("more_contact").onchange = filter;
 	};
 
 	// pre: when the user clicked the search button
@@ -151,6 +152,27 @@
 		}
 
 		return data.childNodes[0].nodeValue;
+	}
+
+	// pre: if the company details are displayed
+	// post: check if the user is mising any information before they send our the data
+	function filter(){
+		if(this.checked){
+			var input = document.querySelectorAll("#data_input > .form_group input");
+			for(var i = 0; i < input.length; i++){
+				input[i].value = "";
+				input[i].disabled = true;
+			}
+
+			document.getElementById("send").disabled = false;
+			document.getElementById("send").onclick = noExtraData;
+		}else{
+			/*
+			**	if the user has not check the checkbox, that means there should be at least one column
+			** 	entered, need to check that and mak sure the phone number is entered by a specific format,
+			**	then let the user able the button to send out the data
+			*/
+		}
 	}
 
 })();
