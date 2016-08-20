@@ -68,11 +68,11 @@
 					</form>
 					<p>&nbsp</p>
 				</div>
-				<div class="from-horizontal">
+				<form class="from-horizontal">
 					<div class="form-group">
 						<button id="send" class="btn btn-warning col-sm-offset-4 col-sm-offset-8" disabled="disabled">我確定資料都是對的，下一步</button>
 					</div>
-				</div>
+				</form>
 			</div>
 
 		</div>
