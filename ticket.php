@@ -48,6 +48,7 @@
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li>Delete</li>
+						<li>Open</li>
 						<li>Stalled</li>
 						<li>Comment</li>
 						<li>Fail</li>
