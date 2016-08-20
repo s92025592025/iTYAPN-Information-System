@@ -159,6 +159,13 @@
 	function filter(){
 		var input = document.querySelectorAll(".well .form-control");
 		document.getElementById("phone").parentNode.parentNode.classList.remove("has-error");
+		document.getElementById("send").parentNode.parentNode.action = "";
+		document.getElementById("send").parentNode.parentNode.method = "";
+
+		var post_input = document.querySelectorAll(".form-horizontal > form-group > input");
+		for(var i = 0; i < post_input.length; i++ ){
+			post_input[i].value = "";
+		}
 
 		if(this.checked){
 			for(var i = 0; i < input.length; i++){
@@ -166,8 +173,7 @@
 				input[i].disabled = true;
 			}
 
-			document.getElementById("send").disabled = false;
-			document.getElementById("send").onclick = noExtraData;
+			noExtraData();
 		}else{
 			/*
 			**	if the user has not check the checkbox, that means there should be at least one column
@@ -186,6 +192,8 @@
 
 	function varifyData(){
 		var input = document.querySelectorAll(".well .form-control");
+		document.getElementById("send").parentNode.parentNode.action = "";
+		document.getElementById("send").parentNode.parentNode.method = "";
 		var flag = false;
 		for(var i = 0; i < input.length; i++){
 			if(input[i].value.trim().length <= 0){
@@ -217,9 +225,36 @@
 		}
 
 		if(flag){
-			document.getElementById("send").disabled = false;
-			document.getElementById("send").onclick = extraData;
+			extraData();
 		}
+	}
+
+	// pre: when the user checked "having to ertra data"
+	// post: put the necessary data in hidden inputs and set action direction
+	function noExtraData(){
+		document.getElementById("post_id").value = document.querySelector("#company_detail > h4").id;
+		document.getElementById("post_contactee").value = "";
+		document.getElementById("post_phone").value = "";
+		document.getElementById("post_email").value = "";
+		enableSend();
+	}
+
+	// pre: when the user unchecked the "have no extra data" and did put data in at least one input tab
+	// post: put the necessary data in hidden inputs for further post action
+	function extraData(){
+		document.getElementById("post_id").value = document.querySelector("#company_detail > h4").id;
+		document.getElementById("post_contactee").value = document.getElementById("contactee").value;
+		document.getElementById("post_email").value = document.getElementById("email").value;
+		document.getElementById("post_phone").value = document.getElementById("phone").value;
+		enableSend();
+	}
+
+	// pre: when the needed information are in the hidden input tabs
+	// post: set up the action and post method, then enable the user to send out data to server
+	function enableSend(){
+		document.getElementById("send").parentNode.parentNode.method = "post";
+		document.getElementById("send").parentNode.parentNode.action = "data/newTicket.php";
+		document.getElementById("send").disabled = false; // should be last step
 	}
 
 })();

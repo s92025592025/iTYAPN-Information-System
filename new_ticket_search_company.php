@@ -71,6 +71,10 @@
 				<form class="from-horizontal">
 					<div class="form-group">
 						<button id="send" class="btn btn-warning col-sm-offset-4 col-sm-offset-8" disabled="disabled">我確定資料都是對的，下一步</button>
+						<input id="post_id" type="hidden" name="id" value="">
+						<input id="post_contactee" type="hidden" name="contactee" value="">
+						<input id="post_email" type="hidden" name="email" value="">
+						<input id="post_phone" type="hidden" name="phone" value="">
 					</div>
 				</form>
 			</div>
