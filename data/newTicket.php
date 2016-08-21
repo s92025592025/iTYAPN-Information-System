@@ -36,6 +36,20 @@
 	$logs->appendChild($log);
 	$year->appendChild($logs);
 
+	// add everything back to dom
+	$ticket->appendChild($year);
+
+	// save xml to file
+	$filename = newTicketFileName();
+	if($ticket->save("tickets/$filename.xml")){
+		// if ticket created successfully
+		header("Location: ../ticket.php?id=$filename");
+		die();
+	}else{
+		showWarning();
+		die();
+	}
+
 ?>
 
 
@@ -66,21 +80,25 @@
 			$user = $test["id"];
 		}
 
+		$user = $conn->quote($user);
 		$company = $conn->quote($_POST["id"]);
-		$yaer = $conn->quote(Date("Y"));;
+		$year = $conn->quote(Date("Y"));
 		$contactee = queryNullMaker($conn, $_POST["contactee"]);
 		$email = queryNullMaker($conn, $_POST["email"]);
 		$phone = queryNullMaker($conn, $_POST["phone"]);
 
+		print "test1";
 
-		$query = $conn->query("INSERT dbo.ticket ([user_id], company_id, year, [status], 
-									contactee, email, c_phone)
-								OUTPUT INSERTED.ID
-								VALUES ($USER, $company, $year, 'new', $contactee, $email,
+		$query = $conn->query("INSERT INTO dbo.ticket ([user_id], company_id, [year], [status], 
+									contactee, [email], c_phone)
+								OUTPUT INSERTED.id
+								VALUES ($user, $company, $year, 'new', $contactee, $email,
 									$phone)");
 
+		print "test2";
+
 		foreach($query as $temp){
-			return $temp["id"] . ".xml";
+			return trim($temp["id"]);
 		}
 	}
 
@@ -88,10 +106,10 @@
 	# post: quote the data if the data is not null, and return null when data is null
 	function queryNullMaker($conn, $data){
 		if($data == null || $data == ""){
-			return null;
+			return 'NULL';
 		}
 
-		return $conn->query($data);
+		return $conn->quote($data);
 	}
 
 ?>
