@@ -52,7 +52,8 @@
 		HTMLFooter();
 	}
 
-	# pre: when the 
+	# pre: when the data check passed, ready to make a new ticket
+	# post: make a new ticket in sql and return the file name to save in server
 	function newTicketFileName(){
 		$conn = connectToDB("dbInformation.txt");
 
@@ -66,8 +67,31 @@
 		}
 
 		$company = $conn->quote($_POST["id"]);
-		$query = $conn->query("");
+		$yaer = $conn->quote(Date("Y"));;
+		$contactee = queryNullMaker($conn, $_POST["contactee"]);
+		$email = queryNullMaker($conn, $_POST["email"]);
+		$phone = queryNullMaker($conn, $_POST["phone"]);
 
+
+		$query = $conn->query("INSERT dbo.ticket ([user_id], company_id, year, [status], 
+									contactee, email, c_phone)
+								OUTPUT INSERTED.ID
+								VALUES ($USER, $company, $year, 'new', $contactee, $email,
+									$phone)");
+
+		foreach($query as $temp){
+			return $temp["id"] . ".xml";
+		}
+	}
+
+	# pre: when the data might be null and it needs to be put in a sql query
+	# post: quote the data if the data is not null, and return null when data is null
+	function queryNullMaker($conn, $data){
+		if($data == null || $data == ""){
+			return null;
+		}
+
+		return $conn->query($data);
 	}
 
 ?>
