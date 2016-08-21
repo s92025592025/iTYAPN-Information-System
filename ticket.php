@@ -32,7 +32,7 @@
 		?>
 
 		<div id="main" class="container">
-			<h1><?=$info["c_name"]?></h1>
+			<h1>#<?=$_GET["id"]?>-<?=$info["c_name"]?></h1>
 
 			<div id="status_control" class="btn-group">
 				<button type="button" class="btn btn-success">Comment</button>
