@@ -132,7 +132,9 @@
 		c_name.innerHTML = "公司名稱: " + response.querySelector("c_name").childNodes[0].nodeValue;
 		e_name.innerHTML = "Company: " + response.querySelector("e_name").childNodes[0].nodeValue;
 		phone.innerHTML = "連絡電話: " + nodeChecker(response.querySelector("phone"));
+		phone.id = "orig_phone"
 		email.innerHTML = "電子信箱: " + nodeChecker(response.querySelector("email"));
+		email.id = "orig_email";
 		address.innerHTML = "公司地址: " + response.querySelector("address").childNodes[0].nodeValue;
 
 		ul.appendChild(c_name);
@@ -242,8 +244,8 @@
 	function noExtraData(){
 		document.getElementById("post_id").value = document.querySelector("#company_detail > h4").id;
 		document.getElementById("post_contactee").value = "";
-		document.getElementById("post_phone").value = "";
-		document.getElementById("post_email").value = "";
+		document.getElementById("post_phone").value = document.getElementById("orig_phone").innerHTML.split(":")[1].trim();
+		document.getElementById("post_email").value = document.getElementById("orig_email").innerHTML.split(":")[1].trim();
 		enableSend();
 	}
 

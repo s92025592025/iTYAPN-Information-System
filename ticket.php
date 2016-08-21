@@ -17,7 +17,7 @@
 
 		$ticketInfo = $conn->query("SELECT TOP(1) [user], c_name, e_name, contactee,
 										dbo.ticket.email, [address], [status],
-										dbo.company_list.phone
+										c_phone
 									FROM dbo.ticket
 									JOIN dbo.company_list ON company_id = dbo.company_list.id
 									JOIN dbo.user_data ON user_id = dbo.user_data.id
@@ -64,7 +64,7 @@
 						<ul>
 							<li>公司名稱: <?=$info["c_name"]?></li>
 							<li>英文名稱: <?=$info["e_name"]?></li>
-							<li>電話號碼: <?=nullTester($info["phone"])?></li>
+							<li>電話號碼: <?=nullTester($info["c_phone"])?></li>
 							<li>電子信箱: <?=nullTester($info["email"])?></li>
 							<li>聯絡地址: <?=$info["address"]?></li>
 							<li>聯絡人:  <?=nullTester($info["contactee"])?></li>
