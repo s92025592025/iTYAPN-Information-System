@@ -20,4 +20,5 @@
     <li>2016/08/02: fiished home dashboard layout, can display the tickets, but still can't see the details</li>
     <li>2016/08/04: account editing feature finished</li>
     <li>2016/08/16: detailed ticket page finisked</li>
+    <li>2016/08/21: create new ticket page finished</li>
   </ul>
