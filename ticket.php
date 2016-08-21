@@ -14,9 +14,10 @@
 
 		$conn = connectToDB("data/dbInformation.txt");
 		$ticketId = $conn->quote($_GET["id"]);
+
 		$ticketInfo = $conn->query("SELECT TOP(1) [user], c_name, e_name, contactee,
 										dbo.ticket.email, [address], [status],
-										phone
+										c_phone
 									FROM dbo.ticket
 									JOIN dbo.company_list ON company_id = dbo.company_list.id
 									JOIN dbo.user_data ON user_id = dbo.user_data.id
@@ -31,7 +32,7 @@
 		?>
 
 		<div id="main" class="container">
-			<h1><?=$info["c_name"]?></h1>
+			<h1>#<?=$_GET["id"]?>-<?=$info["c_name"]?></h1>
 
 			<div id="status_control" class="btn-group">
 				<button type="button" class="btn btn-success">Comment</button>
@@ -47,6 +48,7 @@
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li>Delete</li>
+						<li>Open</li>
 						<li>Stalled</li>
 						<li>Comment</li>
 						<li>Fail</li>
@@ -62,7 +64,7 @@
 						<ul>
 							<li>公司名稱: <?=$info["c_name"]?></li>
 							<li>英文名稱: <?=$info["e_name"]?></li>
-							<li>電話號碼: <?=nullTester($info["phone"])?></li>
+							<li>電話號碼: <?=nullTester($info["c_phone"])?></li>
 							<li>電子信箱: <?=nullTester($info["email"])?></li>
 							<li>聯絡地址: <?=$info["address"]?></li>
 							<li>聯絡人:  <?=nullTester($info["contactee"])?></li>

@@ -1,0 +1,53 @@
+h2 span {
+	color: red;
+	font-size: inherit;
+}
+
+.form-inline {
+	margin-top: 20px;
+}
+
+option {
+	background-color: white;
+}
+
+.info_panel {
+	margin-top: 30px;
+}
+
+th, td {
+	padding-left: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+	background-color: #c2c2c2;
+}
+
+tr:nth-child(even):hover {
+	background-color: #a3a3a3;
+}
+
+tr:nth-child(odd):hover {
+	background-color: #d0d0d0;
+}
+
+tr:hover {
+	cursor: pointer;
+}
+
+h4 {
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+#company_detail_info, #company_map {
+	width: 46%;
+	float: left;
+	margin-left: 15px;
+}
+
+#phone_warning {
+	color: red;
+	margin-top: 10px;
+}
