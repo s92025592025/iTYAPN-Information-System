@@ -3,6 +3,14 @@
 	window.onload = function (){
 		document.getElementById("search_btn").onclick = search;
 		document.getElementById("more_contact").onchange = filter;
+
+		var input = document.querySelectorAll(".well .form-control");
+		for(var i = 0; i < input.length; i++){
+				input[i].value = "";
+				input[i].disabled = false;
+				input[i].onkeyup = varifyData;
+		}
+
 	};
 
 	// pre: when the user clicked the search button
