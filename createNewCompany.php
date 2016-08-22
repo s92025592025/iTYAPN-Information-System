@@ -35,13 +35,13 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">公司電話: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="phone" placeholder="請依照(02)12345678的格式輸入">
+					<input class="form-control phone-num" name="phone" placeholder="請依照(02)12345678的格式輸入">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">電子信箱: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="email" placeholder="請輸入公司電子信箱">
+					<input class="form-control email" name="email" placeholder="請輸入公司電子信箱">
 				</div>
 			</div>
 			<div class="form-group">
@@ -54,7 +54,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">公司傳真: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="fax" placeholder="請依照(02)12345678的格式輸入">
+					<input class="form-control phone-num" name="fax" placeholder="請依照(02)12345678的格式輸入">
 				</div>
 			</div>
 			<div class="form-group">
@@ -65,7 +65,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
-					<button type="submit" class="btm btn-info" disabled="disabled">Submit and Create new Ticket!</button>
+					<button type="submit" class="btn btn-info" disabled="disabled">Submit and Create new Ticket!</button>
 				</div>
 			</div>
 
