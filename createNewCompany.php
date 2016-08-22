@@ -5,7 +5,7 @@
 
 	session_start();
 
-	HTMLHeader("New Company", "", "");
+	HTMLHeader("New Company", "", "createNewCompany.js");
 
 	?>
 
