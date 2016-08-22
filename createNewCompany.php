@@ -65,7 +65,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
-					<button type="submit" class="btm btn-info">Submit and Create new Ticket!</button>
+					<button type="submit" class="btm btn-info" disabled="disabled">Submit and Create new Ticket!</button>
 				</div>
 			</div>
 
