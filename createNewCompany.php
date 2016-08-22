@@ -13,7 +13,7 @@
 		<h1>新增公司 Add New Company</h1>
 		<p>有紅色星星(<span>*</span>)標記欄位為必填</p>
 
-		<form class="form-horizontal" action="" method="POSt">
+		<form class="form-horizontal" action="data/addCompany.php" method="POSt">
 			<div class="form-group must-fill">
 				<label class="control-label col-sm-2">中文名字<span>*</span>: </label>
 				<div class="col-sm-10">
