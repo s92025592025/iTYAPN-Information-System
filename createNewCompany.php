@@ -43,6 +43,7 @@
 				<label class="control-label col-sm-2">電子信箱: </label>
 				<div class="col-sm-10">
 					<input class="form-control email" name="email" placeholder="請輸入公司電子信箱">
+					<span class="help-block email-warning"></span>
 				</div>
 			</div>
 			<div class="form-group">

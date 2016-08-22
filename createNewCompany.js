@@ -69,6 +69,22 @@
 	// post: if the user enter the right email format or "online form", no warnings will be displayed.
 	//		 if not, show warnings and tell them if they are trying to enter "online form"
 	function emailVadilate(){
-		return true;
+		var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var emails = document.querySelectorAll(".email");
+		var flag = true;
+		for(var i = 0; i < emails.length; i++){
+			if(emails[i].values > 0 && !reg.test(emails[i].value.trim())){
+				flag = false;
+
+				document.querySelectorAll(".email-warning")[i].innerHTML = "請輸入正確的電子郵件格式。";
+				emails[i].parentNode.parentNode.classList.add("has-error");
+
+			}else{
+				document.querySelectorAll(".email-warning")[i].innerHTML = "";
+				emails[i].parentNode.parentNode.classList.remove("has-error");
+			}
+		}
+
+		return flag;
 	}
 })();
