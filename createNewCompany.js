@@ -5,7 +5,7 @@
 			inputs[i].onkeyup = checkMustFill;
 		}
 
-		var phones = document.querySelectorAll(".phone-num");
+		/*var phones = document.querySelectorAll(".phone-num");
 		for(var i = 0; i < phones.length; i++){
 			phones[i].onkeyup = phoneVadilate;
 		}
@@ -13,12 +13,11 @@
 		var emails = document.querySelectorAll(".email");
 		for(var i = 0; i < emails.length; i++){
 			emails[i].onkeyup = emailVadilate;
-		}
+		}*/
 	};
 
-	// pre: whenever the user entered something inn input
-	// post: check if the must-fill are filled up. enable the submit button if so,
-	//		 and vise versa
+	// pre: whenever the user entered something in input
+	// post: check if the must-fill are filled up, and whether the data entered were in the right format
 	function checkMustFill(){
 		var must_fills = document.querySelectorAll(".must-fill input");
 		var flag = false;
@@ -28,20 +27,48 @@
 			}
 		}
 
+		if(!phoneVadilate() || !emailVadilate()){
+			flag = true;
+		}
+
 		document.querySelector("button").disabled = flag;
 	}
 
-	// pre: when the user tried to put data in inputs involved with phone numbers
+	// pre: when the user has put data in inputs involved with phone numbers
 	// post: warn the user to follow the format, and ask them to contact admin if they need any other
 	//		 exception
 	function phoneVadilate(){
-		checkMustFill();
+		var phones = document.querySelectorAll(".phone-num");
+		var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/
+		var flag = true;
+		for(var i = 0; i < phones.length; i++){
+			if(phones[i].value.trim().length > 0 && (!reg.test(phones[i].value.trim()) ||
+				phones[i].value.replace("(", "").replace(")", "").trim().length != 10)){
+				// show error message
+				document.querySelectorAll(".phone-warning")[i].innerHTML = 
+					"電話輸入格式有誤。 此欄預設為輸入台灣市內電話所用，請依照 \"(區碼)無空格無符號電話號碼\" 的格式輸入，</br>" + 
+					"且區碼及電話號碼加起來應有10碼。 區碼有兩碼以上也請還是照著得到的資料輸入，因為是存在的。 </br>" + 
+					"如有太過特殊的電話號碼，請洽管理員並將此欄空白，稍後還有機會再修改";
+				phones[i].parentNode.parentNode.classList.add("has-error");
+
+				flag = false;
+			}else{
+				//remove error message
+				document.querySelectorAll(".phone-warning")[i].innerHTML = "";
+				phones[i].parentNode.parentNode.classList.remove("has-error");
+			}
+
+		}
+
+
+		return flag;
+
 	}
 
-	// pre: when the user tried to enter data involved with email address
+	// pre: when the user has enter data involved with email address
 	// post: if the user enter the right email format or "online form", no warnings will be displayed.
 	//		 if not, show warnings and tell them if they are trying to enter "online form"
 	function emailVadilate(){
-		checkMustFill();
+		return true;
 	}
 })();

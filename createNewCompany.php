@@ -5,7 +5,7 @@
 
 	session_start();
 
-	HTMLHeader("New Company", "", "createNewCompany.js");
+	HTMLHeader("New Company", "createNewCompany.css", "createNewCompany.js");
 
 	?>
 
@@ -36,6 +36,7 @@
 				<label class="control-label col-sm-2">公司電話: </label>
 				<div class="col-sm-10">
 					<input class="form-control phone-num" name="phone" placeholder="請依照(02)12345678的格式輸入">
+					<span class="help-block phone-warning"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -55,6 +56,7 @@
 				<label class="control-label col-sm-2">公司傳真: </label>
 				<div class="col-sm-10">
 					<input class="form-control phone-num" name="fax" placeholder="請依照(02)12345678的格式輸入">
+					<span class="help-block phone-warning"></span>
 				</div>
 			</div>
 			<div class="form-group">
