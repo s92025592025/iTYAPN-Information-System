@@ -15,6 +15,7 @@
 
 	if(!isset($_POST["c_name"]) || !isset($_POST["e_name"]) || !isset($_POST["address"]) ||
 		$_POST["c_name"] == "" || $_POST["e_name"] == "" || $_POST["address"] == "" || 
+		!vadilatePhone($_POST["phone"]) || !vadilatePhone($_POST["fax"]) || !vadilateEmail($_POST["email"])){
 		showErrorPage();
 		die();
 	}
