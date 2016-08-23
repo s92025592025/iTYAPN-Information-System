@@ -39,7 +39,7 @@
 	//		 exception
 	function phoneVadilate(){
 		var phones = document.querySelectorAll(".phone-num");
-		var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/
+		var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/;
 		var flag = true;
 		for(var i = 0; i < phones.length; i++){
 			if(phones[i].value.trim().length > 0 && (!reg.test(phones[i].value.trim()) ||
