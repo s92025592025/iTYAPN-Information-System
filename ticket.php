@@ -48,11 +48,11 @@
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Delete</a></li>
-						<li><a href="#">Open</a></li>
-						<li><a href="#">Stalled</a></li>
-						<li><a href="#">Comment</a></li>
-						<li><a href="#">Fail</a></li>
-						<li><a href="#">Success</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Open"?>>Open</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Stalled"?>>Stalled</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Comment"?>>Comment</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Fail"?>>Fail</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Sucess"?>>Success</a></li>
 					</ul>
 				</div>
 			</div>

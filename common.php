@@ -69,4 +69,16 @@
 			die();
 		}
 	}
+
+	# pre: try to warn the user they are doing something wrong
+	# post: display an error page
+	function showErrorMessage(){
+		HTMLHeader("Something's wrong", "", "");
+
+		?>
+			<h1 style="text-align: center; color: red;">OOPS?! Something is wrong. Try to return to last page or just restart what you have just started.</h1>
+		<?php
+
+		HTMLFooter();
+	}
 ?>
