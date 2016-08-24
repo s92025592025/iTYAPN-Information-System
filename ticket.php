@@ -47,12 +47,12 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
-						<li>Delete</li>
-						<li>Open</li>
-						<li>Stalled</li>
-						<li>Comment</li>
-						<li>Fail</li>
-						<li>Success</li>
+						<li><a href="#">Delete</a></li>
+						<li><a href="#">Open</a></li>
+						<li><a href="#">Stalled</a></li>
+						<li><a href="#">Comment</a></li>
+						<li><a href="#">Fail</a></li>
+						<li><a href="#">Success</a></li>
 					</ul>
 				</div>
 			</div>
