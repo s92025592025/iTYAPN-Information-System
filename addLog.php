@@ -59,7 +59,10 @@
 							?>
 						</select>
 					</div>
-					<div class="form-control"></div>
+					<div class="form-group">
+						<label for="comment">紀錄 Comment: </label>
+						<textarea name="comment" id="comment" class="form-control" row="10"></textarea>
+					</div>
 				</form>
 			</div>
 		<?php
