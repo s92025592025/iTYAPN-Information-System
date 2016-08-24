@@ -22,8 +22,6 @@
 
 	$conn = connectToDB("dbInformation.txt");
 
-	// remember to add code to warn the user if the company is already exsited
-
 	$c_name = $conn->quote($_POST["c_name"]);
 	$e_name = $conn->quote($_POST["e_name"]);
 	$address = $conn->quote($_POST["address"]);
@@ -53,7 +51,7 @@
 		HTMLHeader("Something's wrong", "../login.css", "");
 
 		?>
-			<h1 style="text-align: center; color: red;">OOPS?! Something is wrong. Try to return to last page and re-enter the data.</h1>
+			<h1 style="text-align: center; color: red;">OOPS?! Something is wrong. Try to return to last page and re-enter the data. Or you are just trying to add an existing company.</h1>
 		<?php
 
 		HTMLFooter();
