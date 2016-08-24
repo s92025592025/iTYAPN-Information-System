@@ -49,6 +49,9 @@
 
 
 		if($ticket->save("data/tickets/".$_POST["id"].".xml")){
+			if($_POST["status"] != "Comment"){
+				updateStatusInDB();
+			}
 			header("Location: ticket.php?id=".$_POST["id"]);
 		}else{
 			showErrorMessage();
@@ -65,6 +68,19 @@
 			}
 		}
 		return false;
+	}
+
+	# pre: when the user is leaving a comment with a statua change
+	# post: update the status change in db
+	function updateStatusInDB(){
+		$conn = connectToDB("data/dbInformation.txt");
+
+		$id = $conn->quote($_POST["id"]);
+		$status = $conn->quote($_POST["status"]);
+
+		$conn->query("UPDATE dbo.ticket
+					  SET [status] = $status
+					  WHERE [id] = $id");
 	}
 
 	# pre: when log info is not yet done
