@@ -9,7 +9,7 @@
 
 	?>
 		<div class="container">
-			<h1>New Ticket - Step one</h1>
+			<h1>New Ticket - Step one </h1>
 			<h2>請從先從資料庫中選擇已有的公司，如未搜尋到再新增進資料庫。 請盡量用公司<span>"全名"</span>搜尋以免找不到想要的結果</h2>
 
 			<div class="form-inline">
@@ -24,6 +24,7 @@
 					<div class="panel-heading">搜尋結果 Search Results</div>
 					<div class="panel-body"></div>
 				</div>
+
 			</div>
 
 			<div id="company_detail" style="display: none">
