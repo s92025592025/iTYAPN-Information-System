@@ -39,7 +39,7 @@
 		?>
 			<div class="container">
 				<h1>新增紀錄 Add Log</h1>
-				<form action="addLog.php" method="POST">
+				<form class="form-horizontal" action="addLog.php" method="POST">
 					<div class="form-group">
 						<label for="status">狀態 Status:</label>
 						<select name="status" id="status" class="form-control">
@@ -62,6 +62,11 @@
 					<div class="form-group">
 						<label for="comment">紀錄 Comment: </label>
 						<textarea name="comment" id="comment" class="form-control" row="10"></textarea>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offest-5 col-sm-7">
+							<button type="submit" class="btn btn-primary">新增紀錄</button>
+						</div>
 					</div>
 				</form>
 			</div>
