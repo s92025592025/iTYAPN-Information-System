@@ -36,6 +36,33 @@
 
 		HTMLHeader("Add Log", "", "");
 
+		?>
+			<div class="container">
+				<h1>新增紀錄 Add Log</h1>
+				<form action="addLog.php" method="POST">
+					<div class="form-group">
+						<label for="status">狀態 Status:</label>
+						<select name="status" id="status" class="form-control">
+							<?php
+								$status = array("Open", "Stalled", "Comment", "Fail", "Success");
+								foreach($status as $temp){
+									if(strtoupper($temp) == strtoupper($_GET["status"])){
+										?>
+											<option selected value=<?=$temp?>><?=$temp?></option>
+										<?php
+									}else{
+										?>
+											<option value=<?=$temp?>><?=$temp?></option>
+										<?php
+									}
+								}
+							?>
+						</select>
+					</div>
+					<div class="form-control"></div>
+				</form>
+			</div>
+		<?php
 
 		HTMLFooter();
 	}
