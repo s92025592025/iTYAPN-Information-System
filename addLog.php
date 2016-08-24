@@ -18,7 +18,25 @@
 
 	# pre: when the log is finished and is ready to write into xml
 	# post: add log and status into xml
-	function addLog(){}
+	function addLog(){
+		if(!isset($_POST["id"]) || !isset($_POST["status"]) || !is_numeric($_POST["id"]) || 
+			!statusMatch($_POST["status"])){
+			showErrorMessage();
+			die();
+		}
+	}
+
+	# pre: when a status is passed in as a POST method
+	# post: return true if the status passed in is the one we want
+	function statusMatch($data){
+		$statuses = array("Open", "Stalled", "Comment", "Fail", "Success");
+		foreach($statuses as $status){
+			if($data == $status){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	# pre: when log info is not yet done
 	# post: show a page to prompt the user to leave a log
@@ -64,6 +82,7 @@
 						<textarea name="comment" id="comment" class="form-control" row="10"></textarea>
 					</div>
 					<div class="form-group">
+						<input type="hidden" name=id value=<?=$_GET["id"]?> />
 						<div class="col-sm-offest-5 col-sm-7">
 							<button type="submit" class="btn btn-primary">新增紀錄</button>
 						</div>
