@@ -35,7 +35,7 @@
 			<h1>#<?=$_GET["id"]?>-<?=$info["c_name"]?></h1>
 
 			<div id="status_control" class="btn-group">
-				<button type="button" class="btn btn-success">Comment</button>
+				<a role="button" class="btn btn-success" href=<?="addLog.php?id=".$_GET["id"]."&status=Comment"?>>Comment</a>
 				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Basics <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
