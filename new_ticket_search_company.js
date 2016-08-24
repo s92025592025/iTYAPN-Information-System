@@ -90,6 +90,20 @@
 
 			document.querySelector("#search_result .panel-body").appendChild(h3);
 		}
+
+		var btn = document.createElement("button");
+		btn.classList.add("btn");
+		btn.classList.add("btn-warning");
+		btn.innerHTML = "新增公司";
+		btn.style.marginLeft = "13px";
+		var a = document.createElement("a");
+		a.href = "createNewCompany.php";
+		a.appendChild(btn);
+		var h3 = document.createElement("h3");
+			h3.innerHTML ="找不到想要的公司?";
+			h3.style.textAlign = "center";
+			h3.appendChild(a);
+		document.querySelector("#search_result .panel-body").appendChild(h3);
 	}
 
 	// pre: when the user clicked the company they are looking for

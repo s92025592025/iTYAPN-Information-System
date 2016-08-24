@@ -87,15 +87,11 @@
 		$email = queryNullMaker($conn, $_POST["email"]);
 		$phone = queryNullMaker($conn, $_POST["phone"]);
 
-		print "test1";
-
 		$query = $conn->query("INSERT INTO dbo.ticket ([user_id], company_id, [year], [status], 
 									contactee, [email], c_phone)
 								OUTPUT INSERTED.id
 								VALUES ($user, $company, $year, 'new', $contactee, $email,
 									$phone)");
-
-		print "test2";
 
 		foreach($query as $temp){
 			return trim($temp["id"]);
