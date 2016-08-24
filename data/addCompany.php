@@ -78,7 +78,7 @@
 			return 'NULL';
 		}
 
-		return $conn->quote(trim($data));
+		return "N".$conn->quote(trim($data));
 	}
 
 
