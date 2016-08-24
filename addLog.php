@@ -24,6 +24,35 @@
 			showErrorMessage();
 			die();
 		}
+		print "test1";
+		$ticket = new DOMDocument();
+		$ticket->load("data/tickets/".$_POST["id"].".xml");
+		print "test2";
+
+
+		$log = $ticket->createElement("log");
+		$log->setAttribute("time", microtime(true));
+		$log->setAttribute("author", $_SESSION["user"]);
+		$log->setAttribute("status", $_POST["status"]);
+		$text = $ticket->createElement("text", $_POST["comment"]);
+		print "test3";
+
+		$files = $ticket->createElement("files");
+
+		print "test4";
+		$log->appendChild($text);
+		print "test5";
+		$log->appendChild($files);
+		print "test6";
+		$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
+		print "test7";
+
+
+		if($ticket->save("data/tickets/".$_POST["id"].".xml")){
+			header("Location: ticket.php?id=".$_POST["id"]);
+		}else{
+			showErrorMessage();
+		}
 	}
 
 	# pre: when a status is passed in as a POST method
