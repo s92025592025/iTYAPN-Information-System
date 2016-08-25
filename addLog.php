@@ -24,10 +24,8 @@
 			showErrorMessage();
 			die();
 		}
-		print "test1";
 		$ticket = new DOMDocument();
 		$ticket->load("data/tickets/".$_POST["id"].".xml");
-		print "test2";
 
 
 		$log = $ticket->createElement("log");
@@ -35,22 +33,19 @@
 		$log->setAttribute("author", $_SESSION["user"]);
 		$log->setAttribute("status", $_POST["status"]);
 		$text = $ticket->createElement("text", $_POST["comment"]);
-		print "test3";
 
 		$files = $ticket->createElement("files");
 
-		print "test4";
 		$log->appendChild($text);
-		print "test5";
 		$log->appendChild($files);
-		print "test6";
 		$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
-		print "test7";
 
 
 		if($ticket->save("data/tickets/".$_POST["id"].".xml")){
 			if($_POST["status"] != "Comment"){
-				updateStatusInDB();
+				updateStatusInDB($_POST["status"]);
+			}else{
+				openTicket();
 			}
 			header("Location: ticket.php?id=".$_POST["id"]);
 		}else{
@@ -72,15 +67,49 @@
 
 	# pre: when the user is leaving a comment with a statua change
 	# post: update the status change in db
-	function updateStatusInDB(){
+	function updateStatusInDB($status){
 		$conn = connectToDB("data/dbInformation.txt");
 
 		$id = $conn->quote($_POST["id"]);
-		$status = $conn->quote($_POST["status"]);
+		$status = $conn->quote($status);
 
 		$conn->query("UPDATE dbo.ticket
 					  SET [status] = $status
 					  WHERE [id] = $id");
+	}
+
+	# pre: when the user is trying to left a comment and the ticket is new
+	# post: open the ticket and left a system comment
+	function openTicket(){
+		$conn = connectToDB("data/dbInformation.txt");
+
+		$id = $conn->quote($_POST["id"]);
+
+		$count = $conn->query("SELECT COUNT(*)
+								FROM dbo.ticket
+								WHERE [id] = $id AND [status] = 'new'");
+
+		if($count->fetchColumn() > 0){
+			updateStatusInDB("Open");
+			$ticket = new DOMDocument();
+			$ticket->load("data/tickets/".$_POST["id"].".xml");
+
+			$log = $ticket->createElement("log");
+			$log->setAttribute("time", microtime(true));
+			$log->setAttribute("author", "system");
+			$log->setAttribute("status", "Open");
+			$text = $ticket->createElement("text", "system has changed the status to \"Open\"");
+			$files = $ticket->createElement("files");
+
+			$log->appendChild($text);
+			$log->appendChild($files);
+			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
+
+			if(!$ticket->save("data/tickets/".$_POST["id"].".xml")){
+				showErrorMessage();
+			}
+		}
+
 	}
 
 	# pre: when log info is not yet done

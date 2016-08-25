@@ -52,7 +52,7 @@
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Stalled"?>>Stalled</a></li>
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Comment"?>>Comment</a></li>
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Fail"?>>Fail</a></li>
-						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Sucess"?>>Success</a></li>
+						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Success"?>>Success</a></li>
 					</ul>
 				</div>
 			</div>
