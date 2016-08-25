@@ -9,9 +9,11 @@
 					<title><?=$title?></title>
 					<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-					<link rel="stylesheet" type="text/css" href="login.css">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+					<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+					<link rel="stylesheet" type="text/css" href="/login.css">
 					<link rel="stylesheet" type="text/css" href=<?=$css?>>
-					<link rel="icon" type="img/jpg" href="img/logo.jpg">
+					<link rel="icon" type="img/jpg" href="/img/logo.jpg">
 					<script type="text/javascript" src=<?=$js?>></script>
 				</head>
 
@@ -66,5 +68,17 @@
 			header("Location: /login.html");
 			die();
 		}
+	}
+
+	# pre: try to warn the user they are doing something wrong
+	# post: display an error page
+	function showErrorMessage(){
+		HTMLHeader("Something's wrong", "", "");
+
+		?>
+			<h1 style="text-align: center; color: red;">OOPS?! Something is wrong. Try to return to last page or just restart what you have just started.</h1>
+		<?php
+
+		HTMLFooter();
 	}
 ?>
