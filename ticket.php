@@ -39,7 +39,7 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Basics <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">People</a></li>
+						<li><a href="changeOwner.php?id=<?=$_GET["id"]?>">People</a></li>
 						<li><a href="#">Positions</a></li>
 						<li><a href="#">Contacts</a></li>
 					</ul>
