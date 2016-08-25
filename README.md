@@ -9,7 +9,8 @@
     <li>2016/08/02: Build up account page for user to change their information</li>
     <li>2016/08/05: Build up detailed ticket page</li>
     <li>2016/08/17: Build up feature to add new tiket and company</li>
-    <li>2016/08/25: have the use add comments on ticket</li>
+    <li>2016/08/24: have the user add comments on ticket</li>
+    <li>2016/08/25: </li>
   </ul>
 <h2>Finished Progress</h2>
   <ul>
@@ -23,4 +24,5 @@
     <li>2016/08/16: detailed ticket page finisked</li>
     <li>2016/08/21: create new ticket page finished</li>
     <li>2016/08/24: create new company finished</li>
+    <li>2016/08/25: can now update status and comment</li>
   </ul>
