@@ -18,7 +18,85 @@
 	# pre: when the user tried to delete or add a new position
 	# post: add or delete the position in xml
 	function editPosition(){
+		if(!isset($_POST["mode"])){
+			showErrorMessage();
+			die();
+		}
+
+		switch($_POST["mode"]){
+			case "add":
+				addPosition();
+				break;
+			default:
+				showErrorMessage();
+				die();
+				break;
+		}
 	};
+
+	# pre: when the mode was set to "add"
+	# post: add the position into xml file
+	function addPosition(){
+		if(!isset($_POST["ticket_id"]) || !isset($_POST["position_name"]) || !is_numeric($_POST["ticket_id"])){
+			showErrorMessage();
+			die();
+		}
+
+		$ticket = new DOMDocument();
+		$ticket->load("data/tickets/".$_POST["ticket_id"].".xml");
+		
+		# set the attribute of position tag
+		$position = $ticket->createElement("position");
+		$position->setAttribute("name", $_POST["position_name"]);
+		$position->setAttribute("amount", $_POST["amount"]);
+
+		$id = -1;
+		foreach($ticket->getElementsByTagName("position") as $temp){
+			if($id < $temp->getAttribute("id") + 0){
+				$id = $temp->getAttribute("id") + 0;
+			}
+		}
+
+		$position->setAttribute("id", $id + 1);
+
+		# set up requirements tag
+		$requirements = $ticket->createElement("requirements");
+		foreach(explode(";", $_POST["requirements"]) as $temp){
+			$requirements->appendChild($ticket->createElement("requirement", trim($temp)));
+		}
+
+		# set about tag
+		$about = $ticket->createElement("about", $_POST["about"]);
+		# set location tag
+		$location = $ticket->createElement("location", $_POST["location"]);
+		# set paid tag
+		$paid = $ticket->createElement("paid");
+		if(strtolower($_POST["salary"]) == "no"){
+			$salary->setAttribute("paid", "false");
+		}else if(strtolower($_POST["salary"]) == "unknown"){
+			$salary->setAttribute("paid", "unknown");
+		}else{
+			$salary->setAttribute("paid", "true");
+			$salary->appendChild($ticket->createTextNode($_POST["salary"]));
+		}
+		# set other tag
+		$other = $ticket->createElement("other", $_POST["other"]);
+		# put all of them together
+		$position->appendChild($requirements);
+		$position->appendChild($about);
+		$position->appendChild($location);
+		$position->appendChild($paid);
+		$position->appendChild($other);
+		$ticket->getElementsByTagName("positions")->item(0)->appendChild($position);
+
+		if($ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
+			showErrorMessage();
+			die();
+		}else{
+			header("Location: ticket.php?id=".$_POST["ticket_id"]);
+			die();
+		}
+	}
 
 	# pre: when the user request to edit the positions
 	# post: display a page for the user to edit the positions in the ticket
@@ -88,6 +166,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-9">
 								<input type="hidden" name="mode" value="add">
+								<input type="hidden" name="ticket_id" value=<?=$_GET["id"]?>>
 									<button type="submit" class="btn btn-primary">新增職位 Add Position</button>
 								</div>
 							</div>
