@@ -40,7 +40,7 @@
 							<div class="form-group must-fill">
 								<label class="control-label col-sm-2">職位名稱<span>*</span>: </label>
 								<div class="col-sm-6">
-									<input class="form-control" name="position_name" placeholder="請輸入職位名稱(必填)"/ >
+									<input class="form-control" name="position_name" placeholder="請輸入職位名稱(必填)" required / >
 								</div>
 							</div>
 							<div class="form-group">
@@ -61,6 +61,32 @@
 								<div class="col-sm-6">
 									<input class="form-control" name="salary" placeholder="請輸入公司願提共的支薪"/>
 									<span class="help-block">請以新台幣為主並加上單位。如不提共支薪，請輸入"no"(不含引號)。如不清楚或公司未說明，請輸入"unknown"(不含引號)。如有薪資外福利，請在備註中描述。請勿填入此欄。</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">工作內容: </label>
+								<div class="col-sm-6">
+									<textarea class="form-control" rows="5" name="about" placeholder="請輸入此實習的工作內容"></textarea>
+									<span class="help-block">系統將原汁原味，完整呈現此蘭內容，如要列點，請自行排好版</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">徵求條件: </label>
+								<div class="col-sm-6">
+									<textarea class="form-control" rows="5" name="requirements" placeholder="請輸入徵人條件"></textarea>
+									<span class="help-block">如果有列點，請將各點以分號分開。不須將各點編上編號，系統將自動編排好。</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">備 註: </label>
+								<div class="col-sm-6">
+									<textarea class="form-control" name="other" rows="5"></textarea>
+									<span class="help-block">如果除了薪資之外，公司還有提供其他福利，請列舉於此。如有其他備註事項，也請一並記錄於此。</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-9">
+									<button type="submit" class="btn btn-primary">新增職位 Add Position</button>
 								</div>
 							</div>
 					</form>
