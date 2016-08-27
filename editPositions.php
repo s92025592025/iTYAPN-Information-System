@@ -17,7 +17,8 @@
 
 	# pre: when the user tried to delete or add a new position
 	# post: add or delete the position in xml
-	function editPosition(){};
+	function editPosition(){
+	};
 
 	# pre: when the user request to edit the positions
 	# post: display a page for the user to edit the positions in the ticket
@@ -27,7 +28,7 @@
 			die();
 		}
 
-		HTMLHeader("修改職位 Position Edit", "", "");
+		HTMLHeader("修改職位 Position Edit", "editPositions.css", "");
 		?>
 			<div class="container">
 				<h1>修改職位 Edit Position</h1>
@@ -86,6 +87,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-9">
+								<input type="hidden" name="mode" value="add">
 									<button type="submit" class="btn btn-primary">新增職位 Add Position</button>
 								</div>
 							</div>
@@ -95,12 +97,98 @@
 					<fieldset>
 						<legend><h2>現有職位 Provided Position</h2></legend>
 					</fieldset>
-					<form class="form-horizontal" action="editPositions.php" method="POST">
-							
-					</form>
+						<?php
+							$ticket = new DOMDocument();
+							$ticket->load("data/tickets/".$_GET["id"].".xml");
+							if(!$ticket->getElementsByTagName("position")->length){
+								?>
+									<h3>No Position Provided Now.</h3>
+								<?php
+							}else{
+								showCurrentPosition();
+							}
+						?>
 				</div>
 			</div>
 		<?php
 		HTMLFooter();
 	};
+
+	# pre: if there is position provided by the company
+	# post: show all the positions the company provided
+	function showCurrentPosition(){
+		$ticket = new DOMDocument();
+		$ticket->load("data/tickets/".$_GET["id"].".xml");
+		$positions = $ticket->getElementsByTagName("position");
+
+		?>
+			<div class="panel-group" id="accord">
+		<?php
+
+		foreach($positions as $position){
+			?>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accord" href="#position<?=$position->getAttribute("id")?>"><?=$position->getAttribute("name")?></a>
+							<form class="form-horizontal" action="editPositions.php" method="POST">	
+								<button>
+									<input type="hidden" name="mode" value="delete">
+									<input type="hidden" name="position_id" value=<?=$position->getAttribute("id")?>>
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</form>
+							<form class="form-horizontal" action="editPositions.php" method="POST">	
+								<button>
+									<input type="hidden" name="mode" value="edit">
+									<input type="hidden" name="position_id" value=<?=$position->getAttribute("id")?>>
+									<span class="glyphicon glyphicon-edit"></span>
+								</button>
+							</form>
+						</h4>
+					</div>
+					<div class="panel-collapse collapse" id="position<?=$position->getAttribute("id")?>">
+						<div class="panel-body">
+							<ul>
+								<li>招募人數: <?=$position->getAttribute("amount")?> 名</li>
+								<li>工作內容: <?=$position->getElementsByTagName("about")->item(0)->nodeValue?></li>
+								<li>實習地點: <?=$position->getElementsByTagName("location")->item(0)->nodeValue?></li>
+								<li>
+									應徵要求:
+										<ol>
+											<?=showPositionRequirement($position)?>
+										</ol>
+								</li>
+								<li>實習薪資: <?php
+									$salary = $position->getElementsByTagName("paid")->item(0);
+									if($salary->getAttribute("paid") == "true"){
+										print $salary->nodeValue;
+									}else if($salary->getAttribute("paid") == "false"){
+										print "不給薪";
+									}else{
+										print $salary->getAttribute("paid");
+									}
+								?></li>
+								<li>備　註　: <?=$position->getElementsByTagName("other")->item(0)->nodeValue?></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			<?php
+		}
+
+		?>
+			</div>
+		<?php
+	}
+
+	# pre: when there is requirement for this job
+	# post: show the requirements in lists
+	function showPositionRequirement($position){
+		foreach($position->getElementsByTagName("requirement") as $require){
+			?>
+				<li><?=$require->nodeValue?></li>
+			<?php
+		}
+	}
 ?>

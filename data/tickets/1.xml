@@ -5,7 +5,7 @@
 					 amount should be a number of how many people is the company 
 					 looking for, if unknown, input a number smaller than 0
 				-->
-				<position name="國小英語科文字編輯" amount="1">
+				<position name="國小英語科文字編輯" amount="1" id="1">
 					<requirements>
 						<requirement>英文要精通</requirement>
 					</requirements>
@@ -19,7 +19,7 @@
 					<other>如果有其他福利請寫在這</other>
 					<applied>10</applied>
 				</position>
-				<position name="華語文教材行銷企畫" amount="1">
+				<position name="華語文教材行銷企畫" amount="1" id="2">
 					<requirements>
 						<requirement>華文要精通</requirement>
 					</requirements>

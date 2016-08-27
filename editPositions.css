@@ -1,0 +1,16 @@
+.glyphicon {
+	color: gray;
+}
+
+.panel-heading {
+	overflow: hidden;
+}
+
+.panel-title form{
+	float: right;
+}
+
+.panel-title form button{
+	background: transparent;
+	border: none;
+}
