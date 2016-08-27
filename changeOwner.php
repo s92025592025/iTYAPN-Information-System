@@ -107,7 +107,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-4" for="users">負責人 Owner:</label>
 						<div class="col-sm-4">
-							<select class="form-control" name="new_owner" id="users">
+							<select class="form-control" name="new_owner" id="users" required>
 								<?=getUsers()?>
 							</select>
 						</div>

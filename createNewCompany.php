@@ -17,19 +17,19 @@
 			<div class="form-group must-fill">
 				<label class="control-label col-sm-2">中文名字<span>*</span>: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="c_name" placeholder="請輸入公司&quot;完整&quot;中文名字(必填)">
+					<input class="form-control" name="c_name" placeholder="請輸入公司&quot;完整&quot;中文名字(必填)" required />
 				</div>
 			</div>
 			<div class="form-group must-fill">
 				<label class="control-label col-sm-2">英文名字<span>*</span>: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="e_name" placeholder="請輸入公司&quot;完整&quot;英文名字(必填)">
+					<input class="form-control" name="e_name" placeholder="請輸入公司&quot;完整&quot;英文名字(必填)" required />
 				</div>
 			</div>
 			<div class="form-group must-fill">
 				<label class="control-label col-sm-2">公司地址<span>*</span>: </label>
 				<div class="col-sm-10">
-					<input class="form-control" name="address" placeholder="請輸入公司&quot;完整&quot;地址(須包括縣市，必填)">
+					<input class="form-control" name="address" placeholder="請輸入公司&quot;完整&quot;地址(須包括縣市，必填)" required />
 				</div>
 			</div>
 			<div class="form-group">

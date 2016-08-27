@@ -134,7 +134,7 @@
 				<form class="form-horizontal" action="addLog.php" method="POST">
 					<div class="form-group">
 						<label for="status">狀態 Status:</label>
-						<select name="status" id="status" class="form-control">
+						<select name="status" id="status" class="form-control" required>
 							<?php
 								$status = array("Open", "Stalled", "Comment", "Fail", "Success");
 								foreach($status as $temp){
