@@ -49,7 +49,6 @@
 		/*
 		**	REMEMBER TO KEEP A LOG WHEN POSITION IS EDITED
 		*/
-
 		if(!isset($_POST["ticket_id"]) || !isset($_POST["position_id"]) || 
 			!isset($_POST["position_name"]) || !is_numeric($_POST["ticket_id"]) ||
 			!is_numeric($_POST["position_id"]) || $_POST["position_name"] == ""){
@@ -67,6 +66,7 @@
 				$old = $position;
 			}
 		}
+
 
 		if($old == ""){
 			showErrorMessage();
@@ -111,7 +111,7 @@
 			$log->setAttribute("time", microtime(true));
 			$log->setAttribute("author", "system");
 			$log->setAttribute("status", "Comment");
-			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." edited position \"".$old->getAttribute("name")."\""));
+			$log->appendChild($ticket->createElement("text", $_SESSION["user"]." edited position \"".$old->getAttribute("name")."\""));
 			$log->appendChild($ticket->createElement("files"));
 			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 			if($ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
@@ -271,7 +271,7 @@
 			$log->setAttribute("time", microtime(true));
 			$log->setAttribute("author", "system");
 			$log->setAttribute("status", "Comment");
-			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." deleted position \"".$deleted_name."\""));
+			$log->appendChild($ticket->createElement("text", $_SESSION["user"]." deleted position \"".$deleted_name."\""));
 			$log->appendChild($ticket->createElement("files"));
 			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 		}
@@ -347,7 +347,7 @@
 		$log->setAttribute("time", microtime(true));
 		$log->setAttribute("author", "system");
 		$log->setAttribute("status", "Comment");
-		$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." added position \"".$_POST["position_name"]."\""));
+		$log->appendChild($ticket->createElement("text", $_SESSION["user"]." added position \"".$_POST["position_name"]."\""));
 		$log->appendChild($ticket->createElement("files"));
 		$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 
