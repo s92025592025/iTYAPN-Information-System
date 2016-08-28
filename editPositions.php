@@ -25,6 +25,7 @@
 
 		switch($_POST["mode"]){
 			case "add":
+				print "test3";
 				addPosition();
 				break;
 			default:
@@ -61,8 +62,10 @@
 
 		# set up requirements tag
 		$requirements = $ticket->createElement("requirements");
-		foreach(explode(";", $_POST["requirements"]) as $temp){
-			$requirements->appendChild($ticket->createElement("requirement", trim($temp)));
+		if(trim($_POST["requirements"])){
+			foreach(explode(";", trim($_POST["requirements"])) as $temp){
+				$requirements->appendChild($ticket->createElement("requirement", trim($temp)));
+			}
 		}
 
 		# set about tag
@@ -72,12 +75,12 @@
 		# set paid tag
 		$paid = $ticket->createElement("paid");
 		if(strtolower($_POST["salary"]) == "no"){
-			$salary->setAttribute("paid", "false");
+			$paid->setAttribute("paid", "false");
 		}else if(strtolower($_POST["salary"]) == "unknown"){
-			$salary->setAttribute("paid", "unknown");
+			$paid->setAttribute("paid", "unknown");
 		}else{
-			$salary->setAttribute("paid", "true");
-			$salary->appendChild($ticket->createTextNode($_POST["salary"]));
+			$paid->setAttribute("paid", "true");
+			$paid->appendChild($ticket->createTextNode($_POST["salary"]));
 		}
 		# set other tag
 		$other = $ticket->createElement("other", $_POST["other"]);
@@ -89,7 +92,7 @@
 		$position->appendChild($other);
 		$ticket->getElementsByTagName("positions")->item(0)->appendChild($position);
 
-		if($ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
+		if(!$ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
 			showErrorMessage();
 			die();
 		}else{
