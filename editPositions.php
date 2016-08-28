@@ -86,7 +86,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2">實習地點: </label>
 							<div class="col-sm-6">
-								<input class="form-control" name="location" placeholder="請輸入實習工作地點" value=<?=$position->getElementsByTagName("location")->item(0)->nodeValue?>/>
+								<input class="form-control" name="location" placeholder="請輸入實習工作地點" value=<?=$position->getElementsByTagName("location")->item(0)->nodeValue?> >
 								<span class="help-block">如不清楚詳細地址，則輸入所在縣市或地區</span>
 							</div>
 						</div>
@@ -94,29 +94,49 @@
 							<label class="control-label col-sm-2">提供薪資: </label>
 							<div class="col-sm-6">
 								<input class="form-control" name="salary" placeholder="請輸入公司願提共的支薪" value=<?php
-									# need if statment to display
-								?>/>
+									if($position->getElementsByTagName("paid")->item(0)->getAttribute("paid") == "true"){
+										print $position->getElementsByTagName("paid")->item(0)->nodeValue;
+									}else if($position->getElementsByTagName("paid")->item(0)->getAttribute("paid") == "false"){
+										print "no";
+									}else{
+										print $position->getElementsByTagName("paid")->item(0)->getAttribute("paid");
+									}
+								?> >
 								<span class="help-block">請以新台幣為主並加上單位。如不提共支薪，請輸入"no"(不含引號)。如不清楚或公司未說明，請輸入"unknown"(不含引號)。如有薪資外福利，請在備註中描述。請勿填入此欄。</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">工作內容: </label>
 							<div class="col-sm-6">
-								<textarea class="form-control" rows="5" name="about" placeholder="請輸入此實習的工作內容"></textarea>
+								<textarea class="form-control" rows="5" name="about" placeholder="請輸入此實習的工作內容"><?=$position->getElementsByTagName("about")->item(0)->nodeValue?></textarea>
 								<span class="help-block">系統將原汁原味，完整呈現此蘭內容，如要列點，請自行排好版</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">徵求條件: </label>
 							<div class="col-sm-6">
-								<textarea class="form-control" rows="5" name="requirements" placeholder="請輸入徵人條件"></textarea>
+								<textarea class="form-control" rows="5" name="requirements" placeholder="請輸入徵人條件"><?php
+										$requirements = "";
+										$flag = true;
+										foreach($position->getElementsByTagName("requirement") as $require){
+											if($flag){
+												$requirements .= $require->nodeValue; 
+											}else{
+												$requirements .= ";" . $require->nodeValue;
+											}
+
+											$flag = false;
+										}
+
+										print $requirements;
+									?></textarea>
 								<span class="help-block">如果有列點，請將各點以分號分開。不須將各點編上編號，系統將自動編排好。</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">備 註: </label>
 							<div class="col-sm-6">
-								<textarea class="form-control" name="other" rows="5"></textarea>
+								<textarea class="form-control" name="other" rows="5"><?=$position->getElementsByTagName("about")->item(0)->nodeValue?></textarea>
 								<span class="help-block">如果除了薪資之外，公司還有提供其他福利，請列舉於此。如有其他備註事項，也請一並記錄於此。</span>
 							</div>
 						</div>
