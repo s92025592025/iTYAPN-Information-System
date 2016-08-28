@@ -33,12 +33,30 @@
 			case "edit":
 				showEditPage();
 				break;
+			case "editComplete":
+				editPosition();
+				break;
 			default:
 				showErrorMessage();
 				die();
 				break;
 		}
 	};
+
+	# pre: when the user just finished editing
+	# post: edit the position in XML
+	function editPosition(){
+		/*
+		**	REMEMBER TO KEEP A LOG WHEN POSITION IS EDITED
+		*/
+
+		if(!isset($_POST["ticket_id"]) || !isset($_POST["position_id"]) || 
+			!isset($_POST["position_name"]) || !is_numeric($_POST["ticket_id"]) ||
+			!is_numeric($_POST["position_id"]) || $_POST["position_name"] == ""){
+			showErrorMessage();
+			die();
+		}
+	}
 
 	# pre: when a position is clicked to edit
 	# post: show a page with editable inputs to edit
