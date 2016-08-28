@@ -200,7 +200,7 @@
 			$log->setAttribute("time", microtime(true));
 			$log->setAttribute("author", "system");
 			$log->setAttribute("status", "Comment");
-			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." deleted position ".$deleted_name));
+			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." deleted position \"".$deleted_name."\""));
 			$log->appendChild($ticket->createElement("files"));
 			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 		}
@@ -270,6 +270,15 @@
 		$position->appendChild($paid);
 		$position->appendChild($other);
 		$ticket->getElementsByTagName("positions")->item(0)->appendChild($position);
+
+		# leave a log message
+		$log = $ticket->createElement("log");
+		$log->setAttribute("time", microtime(true));
+		$log->setAttribute("author", "system");
+		$log->setAttribute("status", "Comment");
+		$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." added position \"".$_POST["position_name"]."\""));
+		$log->appendChild($ticket->createElement("files"));
+		$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 
 		if(!$ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
 			showErrorMessage();
