@@ -185,14 +185,24 @@
 		$ticket->load("data/tickets/".$_POST["ticket_id"].".xml");
 
 		$delete = -1;
+		$deleted_name = "";
 		for($i = 0; $i < $ticket->getElementsByTagName("position")->length; $i++){
 			if($ticket->getElementsByTagName("position")->item($i)->getAttribute("id") == $_POST["position_id"]){
 				$delete = $i;
+				$deleted_name = $ticket->getElementsByTagName("position")->item($i)->getAttribute("name");
 			}
 		}
 
-		if($delete >= 0){
+		if($delete >= 0 && $deleted_name != ""){
 			$ticket->getElementsByTagName("positions")->item(0)->removeChild($ticket->getElementsByTagName("position")->item($delete));
+			# leave a log message
+			$log = $ticket->createElement("log");
+			$log->setAttribute("time", microtime(true));
+			$log->setAttribute("author", "system");
+			$log->setAttribute("status", "Comment");
+			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." deleted position ".$deleted_name));
+			$log->appendChild($ticket->createElement("files"));
+			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
 		}
 
 		if($ticket->save("data/tickets/" . $_POST["ticket_id"] . ".xml")){
