@@ -25,8 +25,10 @@
 
 		switch($_POST["mode"]){
 			case "add":
-				print "test3";
 				addPosition();
+				break;
+			case "delete":
+				deletePosition();
 				break;
 			default:
 				showErrorMessage();
@@ -34,6 +36,38 @@
 				break;
 		}
 	};
+
+	# pre: when sent in a "delete" mode
+	# post: delete the clicked position
+	function deletePosition(){
+		if(!isset($_POST["ticket_id"]) || !isset($_POST["position_id"]) ||
+			!is_numeric($_POST["ticket_id"]) || !is_numeric($_POST["position_id"])){
+			showErrorMessage();
+			die();
+		}
+
+		$ticket = new DOMDocument();
+		$ticket->load("data/tickets/".$_POST["ticket_id"].".xml");
+
+		$delete = -1;
+		for($i = 0; $i < $ticket->getElementsByTagName("position")->length; $i++){
+			if($ticket->getElementsByTagName("position")->item($i)->getAttribute("id") == $_POST["position_id"]){
+				$delete = $i;
+			}
+		}
+
+		if($delete >= 0){
+			$ticket->getElementsByTagName("positions")->item(0)->removeChild($ticket->getElementsByTagName("position")->item($delete));
+		}
+
+		if($ticket->save("data/tickets/" . $_POST["ticket_id"] . ".xml")){
+			header("Location: ticket.php?id=".$_POST["ticket_id"]);
+			die();
+		}else{
+			showErrorMessage();
+			die();
+		}
+	}
 
 	# pre: when the mode was set to "add"
 	# post: add the position into xml file
@@ -216,6 +250,7 @@
 							<form class="form-horizontal" action="editPositions.php" method="POST">	
 								<button>
 									<input type="hidden" name="mode" value="delete">
+									<input type="hidden" name="ticket_id" value=<?=$_GET["id"]?>>
 									<input type="hidden" name="position_id" value=<?=$position->getAttribute("id")?>>
 									<span class="glyphicon glyphicon-trash"></span>
 								</button>
