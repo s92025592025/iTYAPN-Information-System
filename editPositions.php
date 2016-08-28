@@ -34,7 +34,7 @@
 				showEditPage();
 				break;
 			case "editComplete":
-				editPosition();
+				editPositionXML();
 				break;
 			default:
 				showErrorMessage();
@@ -45,7 +45,7 @@
 
 	# pre: when the user just finished editing
 	# post: edit the position in XML
-	function editPosition(){
+	function editPositionXML(){
 		/*
 		**	REMEMBER TO KEEP A LOG WHEN POSITION IS EDITED
 		*/
@@ -56,6 +56,77 @@
 			showErrorMessage();
 			die();
 		}
+
+		$ticket = new DOMDocument();
+		$ticket->load("data/tickets/".$_POST["ticket_id"].".xml");
+
+		# find old position
+		$old = "";
+		foreach($ticket->getElementsByTagName("position") as $position){
+			if($position->getAttribute("id") == $_POST["position_id"]){
+				$old = $position;
+			}
+		}
+
+		if($old == ""){
+			showErrorMessage();
+			die();
+		}
+
+		$new = $ticket->createElement("position");
+		$new->setAttribute("name", $_POST["position_name"]);
+		$new->setAttribute("amount", $_POST["amount"]);
+		$new->setAttribute("id", $_POST["position_id"]);
+
+		$about = $ticket->createElement("about", $_POST["about"]);
+		$location = $ticket->createElement("location", $_POST["location"]);
+		$other = $ticket->createElement("other", $_POST["other"]);
+
+		$requirements = $ticket->createElement("requirements");
+		if(trim($_POST["requirements"]) != ""){
+			foreach(explode(";", trim($_POST["requirements"])) as $require){
+				$requirements->appendChild($ticket->createElement("requirement", $require));
+			}
+		}
+		
+		$paid = $ticket->createElement("paid");
+		if(trim($_POST["salary"]) == "unknown"){
+			$paid->setAttribute("paid", "unknown");
+		}else if(trim($_POST["salary"]) == "no"){
+			$paid->setAttribute("paid", "false");
+		}else{
+			$paid->setAttribute("paid", "true");
+			$paid->appendChild($ticket->createTextNode(trim($_POST["salary"])));
+		}
+
+		$new->appendChild($requirements);
+		$new->appendChild($about);
+		$new->appendChild($location);
+		$new->appendChild($paid);
+		$new->appendChild($other);
+
+		if($ticket->getElementsByTagName("positions")->item(0)->replaceChild($new, $old)){
+			# leave a log message
+			$log = $ticket->createElement("log");
+			$log->setAttribute("time", microtime(true));
+			$log->setAttribute("author", "system");
+			$log->setAttribute("status", "Comment");
+			$log->appendChild($ticket->createElement("text", $_SESSSION["user"]." edited position \"".$old->getAttribute("name")."\""));
+			$log->appendChild($ticket->createElement("files"));
+			$ticket->getElementsByTagName("logs")->item(0)->appendChild($log);
+			if($ticket->save("data/tickets/".$_POST["ticket_id"].".xml")){
+				header("Location: ticket.php?id=".$_POST["ticket_id"]);
+				die();
+			}else{
+				showErrorMessage();
+				die();
+			}
+		}else{
+			showErrorMessage();
+			die();
+		}
+
+
 	}
 
 	# pre: when a position is clicked to edit
