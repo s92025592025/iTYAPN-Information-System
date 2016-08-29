@@ -41,7 +41,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="changeOwner.php?id=<?=$_GET["id"]?>">People</a></li>
 						<li><a href="editPositions.php?id=<?=$_GET["id"]?>">Positions</a></li>
-						<li><a href="#">Contacts</a></li>
+						<li><a href="editContact.php?id=<?=$_GET["id"]?>">Contacts</a></li>
 					</ul>
 				</div>
 				<div class="btn-group">
