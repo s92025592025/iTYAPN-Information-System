@@ -12,6 +12,7 @@
     <li>2016/08/24: have the user add comments on ticket</li>
     <li>2016/08/25: have the user assign tickets to others</li>
     <li>2016/08/26: have the user to add positions the company is providing</li>
+    <li>2016/08/29: can edit contact information in the ticket</li>
   </ul>
 <h2>Finished Progress</h2>
   <ul>
@@ -27,4 +28,5 @@
     <li>2016/08/24: create new company finished</li>
     <li>2016/08/25: can now update status and comment</li>
     <li>2016/08/25: can now assign tickets to others</li>
+    <li>2016/08/29: user can add, edit and delete positions from the ticket</li>
   </ul>
