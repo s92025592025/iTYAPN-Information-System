@@ -229,7 +229,7 @@
 
 
 		if(flag && document.getElementById("phone").value.trim() != ""){
-			var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/
+			var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/;
 			flag = reg.test(document.getElementById("phone").value.trim()) &&
 					document.getElementById("phone").value.trim().replace("(", "").replace(")", "").length == 10;
 

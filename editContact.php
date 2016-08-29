@@ -28,7 +28,31 @@
 			die();
 		}
 
-		HTMLHeader("編輯聯絡人 Edit Contacts", "", "");
+		$conn = connectToDB("data/dbInformation.txt");
+		$id = $conn->quote($_GET["id"]);
+
+		$quote = $conn->query("SELECT *
+								FROM dbo.ticket
+								WHERE [id] = $id");
+
+		$contactee = "";
+		$email = "";
+		$phone = "";
+		foreach($quote as $row){
+			if($row["contactee"]){
+				$contactee = $row["contactee"];
+			}
+
+			if($row["email"]){
+				$email = $row["email"];
+			}
+
+			if($row["c_phone"]){
+				$phone = $row["c_phone"];
+			}
+		}
+
+		HTMLHeader("編輯聯絡人 Edit Contacts", "", "editContact.js");
 		?>
 			<div class="container">
 				<h1>編輯聯絡人 Edit Contacts</h1>
@@ -36,19 +60,20 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2">聯絡人: </label>
 						<div class="col-sm-6">
-							<input class="form-control" name="contactee" placeholder="請輸入聯絡人姓名">
+							<input class="form-control" name="contactee" placeholder="請輸入聯絡人姓名" value="<?=$contactee?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2">電子信箱: </label>
 						<div class="col-sm-6">
-							<input class="form-control" type="email" name="email" placeholder="請輸入聯絡人電子信箱地址">
+							<input class="form-control" type="email" name="email" placeholder="請輸入聯絡人電子信箱地址" value="<?=$email?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2">連絡電話: </label>
 						<div class="col-sm-6">
-							<input class="form-control" type="tel" name="phone" placeholder="請輸入聯絡人電話">
+							<input id="phone" class="form-control" type="tel" name="phone" placeholder="請輸入聯絡人電話" value="<?=$phone?>">
+							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
