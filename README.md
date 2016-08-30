@@ -31,4 +31,5 @@
     <li>2016/08/25: can now assign tickets to others</li>
     <li>2016/08/29: user can add, edit and delete positions from the ticket</li>
     <li>2016/08/29: can edit contact information in the tickets now</li>
+    <li>2016/08/30: can delet tickets from list now</li>
   </ul>
