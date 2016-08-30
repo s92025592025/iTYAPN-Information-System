@@ -47,7 +47,19 @@
 								FROM dbo.company_list
 								WHERE c_name LIKE N$key OR e_name LIKE N$key OR
 									[address] LIKE N$key OR email LIKE N$key OR
-									phone LIKE N$key OR abbre LIKE N$key
-								ORDER BY c_name, e_name, [email], phone, [address]");
+									phone LIKE N$key OR abbre LIKE N$key");
+
+		?>
+			<table class="table table-striped table-hover table-border">
+				<tr><th>#Id</th><th>公司名字</th><th>Company</th><th>電子信箱</th><th>連絡電話</th></tr>
+				<?php
+					foreach($search as $row){
+						?>
+							<tr><td><?=$row["Id"]?></td><td><?=$row["c_name"]?></td><td><?=$row["e_name"]?></td><td><?=$row["email"]?></td><td><?=$row["phone"]?></td></tr>
+						<?php
+					}
+				?>
+			</table>
+		<?php
 	}
 ?>
