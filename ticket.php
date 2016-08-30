@@ -47,7 +47,7 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Delete</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal">Delete</a></li>
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Open"?>>Open</a></li>
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Stalled"?>>Stalled</a></li>
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Comment"?>>Comment</a></li>
@@ -55,6 +55,31 @@
 						<li><a href=<?="addLog.php?id=".$_GET["id"]."&status=Success"?>>Success</a></li>
 					</ul>
 				</div>
+			</div>
+
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog modal-sm">
+
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">確定要刪除?</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>確定要刪除? 此舉將無法恢復。</p>
+			      </div>
+			      <div class="modal-footer">
+			      	<form action="data/deleteTicket.php" method="POST">
+			      		<input type="hidden" name="id" value="<?=$_GET["id"]?>">
+				      	<button type="submit" class="btn btn-danger">確定刪除</button>
+			        	<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+
+				     </form>
+			      </div>
+			    </div>
+
+			  </div>
 			</div>
 
 			<div class="row">
