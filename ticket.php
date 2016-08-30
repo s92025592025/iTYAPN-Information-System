@@ -58,7 +58,7 @@
 			</div>
 
 			<div id="myModal" class="modal fade" role="dialog">
-			  <div class="modal-dialog">
+			  <div class="modal-dialog modal-sm">
 
 			    <!-- Modal content-->
 			    <div class="modal-content">
@@ -70,7 +70,7 @@
 			        <p>確定要刪除? 此舉將無法恢復。</p>
 			      </div>
 			      <div class="modal-footer">
-			      	<form>
+			      	<form action="data/deleteTicket.php" method="POST">
 			      		<input type="hidden" name="id" value="<?=$_GET["id"]?>">
 				      	<button type="submit" class="btn btn-danger">確定刪除</button>
 			        	<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
