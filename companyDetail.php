@@ -65,8 +65,22 @@
 				</div>
 			</div>
 
+			<?php
+				$statics = companyStatics();
+			?>
+
 			<div class="panel panel-success">
-				<div class="panel-heading"></div>
+				<div class="panel-heading">統計 Statics (From 2015)</div>
+				<div class="panel-body">
+					<div class="panel-detail">
+						<ul>
+							<li>總連絡次數: <?=$statics["total_contact"]?></li>
+							<li>取得實習職位數: <?=$statics["total_positions"]?></li>
+							<li>洽談成功次數: <?=$statics["total_success"]?></li>
+							<li>洽談失敗次數: <?=$statics["total_fail"]?></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	<?php
@@ -75,6 +89,42 @@
 
 <?php
 	# this is a function block
+	
+	# pre: when the company detail is requested from search page
+	# post: get the statics from previous tickets
+	function companyStatics(){
+		$conn = connectToDB("data/dbInformation.txt");
+		$statics = array(
+							"total_contact" => 0,
+							"total_positions" => 0,
+							"total_success" => 0,
+							"total_fail" => 0
+													);
+
+		$id = $conn->quote($_GET["id"]);
+
+		$statics["total_contact"] = $conn->query("SELECT COUNT(*)
+												  FROM dbo.ticket
+												  WHERE company_id = $id")->fetchColumn();
+		$statics["total_success"] = $conn->query("SELECT COUNT(*)
+												  FROM dbo.ticket
+												  WHERE company_id = $id AND [status] = 'Success'")->fetchColumn();
+		$statics["total_fail"] = $conn->query("SELECT COUNT(*)
+											   FROM dbo.ticket
+											   WHERE company_id = $id AND [status] = 'Fail'")->fetchColumn();
+
+		$query = $conn->query("SELECT [Id]
+							   FROM dbo.ticket
+							   WHERE company_id = $id");
+		foreach($query as $row){
+			$ticket = new DOMDocument();
+			$ticket->load("data/tickets/".$row["Id"].".xml");
+
+			$statics["total_positions"] += $ticket->getElementsByTagName("position")->length;
+		}
+
+		return $statics;
+	}
 
 	# pre: when a line of data might be empty or null
 	# post: return "none" when data is empty, return original if not
