@@ -1,21 +1,15 @@
 <?php
 
-	/*
-	** Thinking about using this file to add the new company to sql, and then send a post request
-	** to newTicket.php to let it handle the rest. Check the reference below for sending post request
-	** from php.
-	** http://stackoverflow.com/questions/5647461/how-do-i-send-a-post-request-with-php
-	*/
-
 	include("../common.php");
 
 	checkLoggedIn();
 
 	session_start();
 
-	if(!isset($_POST["c_name"]) || !isset($_POST["e_name"]) || !isset($_POST["address"]) ||
-		$_POST["c_name"] == "" || $_POST["e_name"] == "" || $_POST["address"] == "" || 
-		!vadilatePhone($_POST["phone"]) || !vadilatePhone($_POST["fax"]) || !vadilateEmail($_POST["email"])){
+	if(!isset($_POST["c_name"]) || !isset($_POST["e_name"]) || !isset($_POST["address"]) || 
+		!isset($_POST["genre"]) || $_POST["c_name"] == "" || $_POST["e_name"] == "" || 
+		$_POST["address"] == "" || $_POST["genre"] == "" || !vadilatePhone($_POST["phone"]) || 
+		!vadilatePhone($_POST["fax"]) || !vadilateEmail($_POST["email"])){
 		showErrorPage();
 		die();
 	}
@@ -25,6 +19,7 @@
 	$c_name = $conn->quote($_POST["c_name"]);
 	$e_name = $conn->quote($_POST["e_name"]);
 	$address = $conn->quote($_POST["address"]);
+	$genre = $conn->quote($_POST["genre"]);
 	$email = nullMaker($conn, $_POST["email"]);
 	$phone = nullMaker($conn, $_POST["phone"]);
 	$customer = nullMaker($conn, $_POST["customer_service"]);
@@ -32,10 +27,10 @@
 	$abbre = nullMaker($conn, $_POST["abbre"]);
 
 	$conn->query("INSERT INTO dbo.company_list (c_name, e_name, [address], email, phone,
-					custom_service, fax, abbre)
+					custom_service, fax, abbre, genre)
 		   		  OUTPUT INSERTED.id
 				  VALUES (N$c_name, $e_name, N$address, $email, $phone, $customer, $fax,
-					$abbre)");
+					$abbre, N$genre)");
 
 
 	showSuccessMessage();
@@ -66,7 +61,7 @@
 	// pre: when the user send a company data in
 	// post: return true when email address is null or matches the pattern
 	function vadilateEmail($email){
-		return strlen(trim($email)) == 0 || filter_var($email, FILTER_VALIDATE_EMAIL);
+		return strlen(trim($email)) == 0 || $email == "online form" || filter_var($email, FILTER_VALIDATE_EMAIL);
 	}
 
 	// pre: when the data has any chance to be null
