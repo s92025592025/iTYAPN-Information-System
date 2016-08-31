@@ -45,7 +45,7 @@
 	?>
 		<div class="container">
 			<h1>公司詳情 Company Detail</h1>
-			<h2><?=$company_detail["c_name"]." ".$company_detail["e_name"]?></h2>
+			<h2><?=$company_detail["c_name"]." ".$company_detail["e_name"]?> <a role="button" href="editCompany.php?id=<?=$_GET["id"]?>" class="btn btn-warning">修改資料</a></h2>
 			<div class="panel panel-info">
 				<div class="panel-heading">基本資料</div>
 				<div class="panel-body">
