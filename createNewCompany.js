@@ -4,16 +4,6 @@
 		for(var i = 0; i < inputs.length; i++){
 			inputs[i].onkeyup = checkMustFill;
 		}
-
-		/*var phones = document.querySelectorAll(".phone-num");
-		for(var i = 0; i < phones.length; i++){
-			phones[i].onkeyup = phoneVadilate;
-		}
-
-		var emails = document.querySelectorAll(".email");
-		for(var i = 0; i < emails.length; i++){
-			emails[i].onkeyup = emailVadilate;
-		}*/
 	};
 
 	// pre: whenever the user entered something in input
