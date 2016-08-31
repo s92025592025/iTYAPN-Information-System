@@ -26,13 +26,15 @@
 								"address" => "",
 								"customer" => "",
 								"fax" => "",
-								"abbre" => ""
+								"abbre" => "",
+								"genre" => ""
 							);
 
 	foreach($query as $row){
 		$company_detail["c_name"] = $row["c_name"];
 		$company_detail["e_name"] = $row["e_name"];
 		$company_detail["address"] = $row["address"];
+		$company_detail["genre"] = nullConvert($row["genre"]);
 		$company_detail["email"] = nullConvert($row["email"]);
 		$company_detail["phone"] = nullConvert($row["phone"]);
 		$company_detail["fax"] = nullConvert($row["fax"]);
@@ -55,6 +57,7 @@
 							<li>電子信箱: <?=$company_detail["email"]?></li>
 							<li>客戶服務: <?=$company_detail["customer"]?></li>
 							<li>傳真號碼: <?=$company_detail["fax"]?></li>
+							<li>產業類別: <?=$company_detail["genre"]?></li>
 							<li>其他稱呼: <?=str_replace(";", ", ", $company_detail["abbre"])?></li>
 							<li>公司地址: <?=$company_detail["address"]?></li>
 						</ul>
