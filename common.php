@@ -25,7 +25,7 @@
 							</div>
 							<ul class="nav navbar-nav">
 								<li><a href="home.php">Home</a></li>
-								<li><a herf="search.php">Search</a></li>
+								<li><a href="search.php">Search</a></li>
 								<li><a href="account.php">Account</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
