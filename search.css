@@ -1,3 +1,24 @@
 table {
 	background-color: #c2c2c2;
+	margin-top: 20px;
+}
+
+h2 {
+	text-align: center;
+}
+
+td a {
+	color: black;
+}
+
+tr:nth-child(odd):hover {
+	background-color: #c2c2c2;
+}
+
+tr:nth-child(even):hover {
+	background-color: #d0d0d0;
+}
+
+tr:hover {
+	cursor: pointer;
 }

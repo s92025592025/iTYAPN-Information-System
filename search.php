@@ -24,7 +24,7 @@
 			</form>
 			<?php
 				if(isset($_GET["key"])){
-					showResults($_GET["key"]);
+					showResults(trim($_GET["key"]));
 				}
 			?>
 		</div>
@@ -50,16 +50,17 @@
 									phone LIKE N$key OR abbre LIKE N$key");
 
 		?>
-			<table class="table table-striped table-hover table-border">
+			<table class="table table-striped table-border">
 				<tr><th>#Id</th><th>公司名字</th><th>Company</th><th>電子信箱</th><th>連絡電話</th></tr>
 				<?php
 					foreach($search as $row){
 						?>
-							<tr><td><?=$row["Id"]?></td><td><?=$row["c_name"]?></td><td><?=$row["e_name"]?></td><td><?=$row["email"]?></td><td><?=$row["phone"]?></td></tr>
+							<tr><td><?=$row["Id"]?></td><td><a href="companyDetail.php?id=<?=$row["Id"]?>"><?=$row["c_name"]?><a></td><td><?=$row["e_name"]?></td><td><?=$row["email"]?></td><td><?=$row["phone"]?></td></tr>
 						<?php
 					}
 				?>
 			</table>
+			<h2>找不到公司? <a href="createNewCompany.php"><button class="btn btn-warning">新增公司 Add Company</button></a></h2>
 		<?php
 	}
 ?>
