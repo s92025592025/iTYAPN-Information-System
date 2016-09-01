@@ -15,6 +15,7 @@
     <li>2016/08/29: can edit contact information in the ticket</li>
     <li>2016/08/30: sewarch company and get statics</li>
     <li>2016/09/01: edit already added company detail</li>
+    <li>2016/09/01: find a way to have user upload imgs</li>
   </ul>
 <h2>Finished Progress</h2>
   <ul>
@@ -35,4 +36,5 @@
     <li>2016/08/30: can delet tickets from list now</li>
     <li>2016/08/31: can search company from search pag(but still can't see details)e</li>
     <li>2016/08/31: can see company details with all the data in sql server and some simple statics</li>
+    <li>2016/09/01: can edit company detail</li>
   </ul>
