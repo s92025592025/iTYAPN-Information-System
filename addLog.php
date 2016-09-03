@@ -156,6 +156,10 @@
 						<textarea name="comment" id="comment" class="form-control" row="10"></textarea>
 					</div>
 					<div class="form-group">
+						<label for="img">上傳照片</label>
+						<input type="file" name="img" accept="image/*">
+					</div>
+					<div class="form-group">
 						<input type="hidden" name=id value=<?=$_GET["id"]?> />
 						<div class="col-sm-offest-5 col-sm-7">
 							<button type="submit" class="btn btn-primary">新增紀錄</button>
