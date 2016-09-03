@@ -35,6 +35,10 @@
 		$text = $ticket->createElement("text", $_POST["comment"]);
 
 		$files = $ticket->createElement("files");
+		# check if the img is uploaded
+		if(is_uploaded_file($_FILES["img"]["tmp_name"])){
+			$files->appendChild($ticket->createElement("images", uploadImg()));
+		}
 
 		$log->appendChild($text);
 		$log->appendChild($files);
@@ -51,6 +55,39 @@
 		}else{
 			showErrorMessage();
 		}
+	}
+
+	# pre: when the user did uploaded a img
+	# post: upload the file to imgur and return the url
+	/*
+	**	For how to upload the files to imgur, see reference:
+	**	http://subinsb.com/uploading-images-using-imgur-api-in-php
+	*/
+	function uploadImg(){
+		$img = file($_FILES["img"]["tmp_name"]);
+		$client_id = trim(file("data/imgurAPI.txt")[0]);
+		$pvars = array("image" => base64_encode($img));
+
+		$upload = curl_init();
+
+		/*
+		curl_setopt($upload, CURLOPT_URL, "https://api.imgur.com/3/image.xml");
+		curl_setopt($upload, CURLOPT_TIMEOUT, 30);
+		curl_setopt($upload, CURLOPT_HTTPHEADER, array("Authorization: Client-ID $client_id"));
+		curl_setopt($upload, CURLOPT_POST, true);
+		curl_setopt($upload, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($upload, CURLOPT_POSTFIELDS, array("image" => base64_encode($img)));
+		*/
+
+		curl_setopt($upload, CURLOPT_URL, "https://api.imgur.com/3/credits.xml");
+		curl_setopt($upload, CURLOPT_HTTPHEADER, array("Authorization: Client-ID 758244ce266c158"));
+		curl_setopt($upload, CURLOPT_RETURNTRANSFER, true);
+		$out = curl_exec($upload);
+		curl_close($upload);
+
+		header("Content-type: text/xml");
+		print $out;
+		die();
 	}
 
 	# pre: when a status is passed in as a POST method
@@ -131,7 +168,7 @@
 		?>
 			<div class="container">
 				<h1>新增紀錄 Add Log</h1>
-				<form class="form-horizontal" action="addLog.php" method="POST">
+				<form class="form-horizontal" enctype="multipart/form-data" action="addLog.php" method="POST">
 					<div class="form-group">
 						<label for="status">狀態 Status:</label>
 						<select name="status" id="status" class="form-control" required>
