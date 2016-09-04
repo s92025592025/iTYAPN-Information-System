@@ -64,30 +64,28 @@
 	**	http://subinsb.com/uploading-images-using-imgur-api-in-php
 	*/
 	function uploadImg(){
-		$img = file($_FILES["img"]["tmp_name"]);
+		$img = file_get_contents($_FILES["img"]["tmp_name"]);
 		$client_id = trim(file("data/imgurAPI.txt")[0]);
 		$pvars = array("image" => base64_encode($img));
 
 		$upload = curl_init();
 
-		/*
-		curl_setopt($upload, CURLOPT_URL, "https://api.imgur.com/3/image.xml");
+		curl_setopt($upload, CURLOPT_URL, "https://api.imgur.com/3/image.json");
 		curl_setopt($upload, CURLOPT_TIMEOUT, 30);
 		curl_setopt($upload, CURLOPT_HTTPHEADER, array("Authorization: Client-ID $client_id"));
 		curl_setopt($upload, CURLOPT_POST, true);
 		curl_setopt($upload, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($upload, CURLOPT_POSTFIELDS, array("image" => base64_encode($img)));
-		*/
-
-		curl_setopt($upload, CURLOPT_URL, "https://api.imgur.com/3/credits.xml");
-		curl_setopt($upload, CURLOPT_HTTPHEADER, array("Authorization: Client-ID 758244ce266c158"));
-		curl_setopt($upload, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($upload, CURLOPT_SSL_VERIFYPEER, false);
 		$out = curl_exec($upload);
 		curl_close($upload);
 
-		header("Content-type: text/xml");
-		print $out;
-		die();
+		if($out){
+			$json = json_decode($out);
+			return $json->data->link;
+		}else{
+			print $out;
+		}
 	}
 
 	# pre: when a status is passed in as a POST method
