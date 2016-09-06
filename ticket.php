@@ -225,8 +225,19 @@
 		$logs = $xml->getElementsByTagName("log");
 
 		foreach($logs as $log){
+			$panelClass = "panel-default";
+
+			if($log->getAttribute("status") == "Comment"){
+				$panelClass = "panel-info";
+			}else{
+				$panelClass = "panel-warning";
+			}
+
+			if($log->getAttribute("author") == "system"){
+				$panelClass = "panel-danger";
+			}
 			?>
-				<div class="comment panel panel-default">
+				<div class="comment panel <?=$panelClass?>">
 					<div class="panel-heading">
 						<div class="row">
 							<div class="log_status col-sm-1"><?=$log->getAttribute("status")?></div>
