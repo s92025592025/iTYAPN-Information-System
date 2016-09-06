@@ -1,23 +1,48 @@
 <?php
-	$name = $_GET["name"];
-	$pw = $_GET["pw"];
+ /* $filename = "/img/logo.jpg";
+  $post = array("title" => $filename,
+                "Content-type" => "image/jpeg",
+                "Content-Length" => filesize($filename));
+  $header = array("Authorization" => "Bearer APmJenSy9iMlJYfX-OQb0ZJL");
+  $host = "https://www.googleapis.com/upload/drive/v2/files?uploadType=media";
 
-	try{
-			$conn = new PDO ( "sqlsrv:server = tcp:ityapn-database-server.database.windows.net,1433; Database = iTYAPNSystemDB", trim(file("dbInformation.txt")[0]), trim(file("dbInformation.txt")[1]));
-			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-		}catch(PDOException $e){
-			header("Content-type: plain/text");
-			print($e->getMessage());
-		}
+  $curl = curl_init();
+  curl_setopt($curl,  CURLOPT_URL, $host);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
-		$name = $conn->quote($name);
-		$pw = $conn->quote($pw);
+  $output = curl_exec($curl);
+  curl_close($output);
 
-		$account = $conn->query("SELECT [user]
-								 FROM dbo.user_data
-								 WHERE [user] LIKE $name AND [password] LIKE $pw");
+  print $output;
+  */
+?>
 
-		header("Content-type: plain/text");
-		print_r($account);
+<?php 
+  $post = array("grant_type" => "refresh_token",
+                "client_id" => "",
+                "client_secret" => "",
+                "refresh_token" => "",
+                "Content-length" => "163");
+
+  $header = array("Content-type" => "application/x-www-form-urlencoded",
+                  "Content-length" => "163");
+
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, "www.googleapis.com/oauth2/v4/token");
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+  curl_setopt($curl, CURLOPT_POST, $post);
+
+  $output = curl_exec($curl);
+  curl_close($curl);
+
+  print $output;
 
 ?>

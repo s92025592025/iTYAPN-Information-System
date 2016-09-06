@@ -2,3 +2,5 @@ dbInformation.txt
 test.php
 googleAPI.txt
 imgurAPI.txt
+client_secret.json
+gDriveRefreshTocken.txt
