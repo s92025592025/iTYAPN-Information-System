@@ -45,4 +45,10 @@
 
   print $output;
 
+	if($xml){
+		header("Content-type: text/xml");
+		print $xml;
+	}else{
+		print $xml;
+	}
 ?>

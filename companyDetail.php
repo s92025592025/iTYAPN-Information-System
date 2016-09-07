@@ -85,6 +85,29 @@
 					</div>
 				</div>
 			</div>
+
+			<?php
+				$query = $conn->query("SELECT dbo.ticket.[Id], c_name, [user], [year], [status]
+									   FROM dbo.ticket
+									   JOIN dbo.company_list ON dbo.company_list.[Id] = company_id
+									   JOIN dbo.user_data ON dbo.user_data.[id] = user_id
+									   WHERE $company_id = company_id");
+			?>
+			<div class="panel panel-info">
+				<div class="panel-heading">聯絡紀錄 Past Tickets</div>
+				<div class="panel-body">
+					<table class="table table-hover table-condensed">
+						<tr><th>#Id</th><th>公司名字</th><th>負責人</th><th>年分</th><th>狀態</th></tr>
+						<?php
+							foreach($query as $row){
+								?>
+									<tr><td><?=$row["Id"]?></td><td><a href="ticket.php?id=<?=$row["Id"]?>"><?=$row["c_name"]?></a></td><td><?=$row["user"]?></td><td><?=$row["year"]?></td><td><?=$row["status"]?></td></tr>
+								<?php
+							}
+						?>
+					</table>
+				</div>
+			</div>
 		</div>
 	<?php
 	HTMLFooter();
