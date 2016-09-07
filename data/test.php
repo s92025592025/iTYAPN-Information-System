@@ -1,23 +1,18 @@
 <?php
-	$name = $_GET["name"];
-	$pw = $_GET["pw"];
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, "https://api.imgur.com/3/credits.xml?_fake_status=200");
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Client-ID "));
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-	try{
-			$conn = new PDO ( "sqlsrv:server = tcp:ityapn-database-server.database.windows.net,1433; Database = iTYAPNSystemDB", trim(file("dbInformation.txt")[0]), trim(file("dbInformation.txt")[1]));
-			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-		}catch(PDOException $e){
-			header("Content-type: plain/text");
-			print($e->getMessage());
-		}
+	$xml = curl_exec($curl);
 
-		$name = $conn->quote($name);
-		$pw = $conn->quote($pw);
+	curl_close($curl);
 
-		$account = $conn->query("SELECT [user]
-								 FROM dbo.user_data
-								 WHERE [user] LIKE $name AND [password] LIKE $pw");
-
-		header("Content-type: plain/text");
-		print_r($account);
-
+	if($xml){
+		header("Content-type: text/xml");
+		print $xml;
+	}else{
+		print $xml;
+	}
 ?>
