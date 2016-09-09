@@ -23,32 +23,22 @@
 ?>
 
 <?php 
-  $post = array("grant_type" => "refresh_token",
-                "client_id" => "",
-                "client_secret" => "",
-                "refresh_token" => "",
-                "Content-length" => "163");
+  set_include_path(get_include_path() . PATH_SEPARATOR . '/google-api-php-client-master/src');
+  include '/google-api-php-client-master/src/Google/autoload.php';
 
-  $header = array("Content-type" => "application/x-www-form-urlencoded",
-                  "Content-length" => "163");
-
-  $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, "www.googleapis.com/oauth2/v4/token");
-  curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-  curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-  curl_setopt($curl, CURLOPT_POST, $post);
-
-  $output = curl_exec($curl);
-  curl_close($curl);
-
-  print $output;
-
-	if($xml){
-		header("Content-type: text/xml");
-		print $xml;
-	}else{
-		print $xml;
-	}
+  print "1";
+  $client = new Google_Client();
+  print "2";
+  $client->setAuthConfig('client_secrets.json');
+  print "3";
+  $client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+  print "4";
+  $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+  print "5";
+  $client->setAccessType("offline");
+  print "6";
+  $client->authenticate("1/T0Sm4vrzonTFakUQ8I2Xw0b6z9oLS3cotxAbD9IS7-0");
+  print "7";
+  $access_token = $client->getAccessToken();
+  print $access_token;
 ?>
