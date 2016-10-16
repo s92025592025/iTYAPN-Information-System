@@ -4,6 +4,10 @@
 		for(var i = 0; i < inputs.length; i++){
 			inputs[i].onkeyup = checkMustFill;
 		}
+
+		var selects = document.querySelectorAll("select"){
+			selects[i].onchange = checkMustFill;
+		}
 	};
 
 	// pre: whenever the user entered something in input
