@@ -52,7 +52,7 @@
 					<input class="form-control" name="address" placeholder="請輸入公司&quot;完整&quot;地址(須包括縣市，必填)" value="<?=$subsitude["address"]?>" required />
 				</div>
 			</div>
-			<div class="form-group must-fill">
+			<div class="form-group">
 				<label class="control-label col-sm-2">產業類別<span>*</span>: </label>
 				<div class="col-sm-10">
 					<select class="form-control" name="genre" required>
