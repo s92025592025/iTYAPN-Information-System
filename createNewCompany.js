@@ -5,7 +5,8 @@
 			inputs[i].onkeyup = checkMustFill;
 		}
 
-		var selects = document.querySelectorAll("select"){
+		var selects = document.querySelectorAll("select")
+		for(var i = 0; i < selects.length; i++){
 			selects[i].onchange = checkMustFill;
 		}
 	};
