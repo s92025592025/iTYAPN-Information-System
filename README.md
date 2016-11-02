@@ -16,6 +16,7 @@
     <li>2016/08/30: sewarch company and get statics</li>
     <li>2016/09/01: edit already added company detail</li>
     <li>2016/09/01: find a way to have user upload imgs</li>
+    <li>2016/11/01: Develope a new phne regex</li>
   </ul>
 <h2>Finished Progress</h2>
   <ul>
@@ -38,4 +39,5 @@
     <li>2016/08/31: can see company details with all the data in sql server and some simple statics</li>
     <li>2016/09/01: can edit company detail</li>
     <li>2016/09/04: allow user to upload photo, and store them on imgur</li>
+    <li>2016/11/01: allow user to enter phone and fax number with branch</li>
   </ul>
