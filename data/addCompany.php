@@ -55,7 +55,7 @@
 	// pre: when the user send a company data in
 	// post: return true when phone number is null or matches the pattern
 	function vadilatePhone($phone){
-		return true; //strlen(trim($phone)) == 0 || (preg_match("/^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/", trim($phone)) && strlen(str_replace(")", "", str_replace("(", "", trim($phone)))) == 10);
+		return strlen(trim($phone)) == 0 || (preg_match("/^\((02|03|037|04|049|05|06|07|08|089|082|0826|0836)\)[0-9]{5,8}(#[0-9]+)?$/", trim($phone)));
 	}
 
 	// pre: when the user send a company data in
