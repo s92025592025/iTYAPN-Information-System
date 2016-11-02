@@ -16,6 +16,7 @@
     <li>2016/08/30: sewarch company and get statics</li>
     <li>2016/09/01: edit already added company detail</li>
     <li>2016/09/01: find a way to have user upload imgs</li>
+    <li>2016/11/01: Develope a new phne regex</li>
   </ul>
 <h2>Finished Progress</h2>
   <ul>
