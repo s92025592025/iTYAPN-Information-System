@@ -37,8 +37,7 @@
 		var reg = /^\(0([2-8]|37|49|89|82|826|836)\)[0-9]{5,8}$/;
 		var flag = true;
 		for(var i = 0; i < phones.length; i++){
-			if(phones[i].value.trim().length > 0 && (!reg.test(phones[i].value.trim()) ||
-				phones[i].value.replace("(", "").replace(")", "").trim().length != 10)){
+			if(phones[i].value.trim().length > 0){
 				// show error message
 				document.querySelectorAll(".phone-warning")[i].innerHTML = 
 					"電話輸入格式有誤。 此欄預設為輸入台灣市內電話所用，請依照 \"(區碼)無空格無符號電話號碼\" 的格式輸入，</br>" + 
