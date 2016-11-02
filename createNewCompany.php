@@ -77,7 +77,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">公司電話: </label>
 				<div class="col-sm-10">
-					<input class="form-control phone-num" name="phone" placeholder="請依照(02)12345678的格式輸入" value="<?=$subsitude["phone"]?>">
+					<input class="form-control phone-num" name="phone" placeholder="請依照(02)12345678的格式輸入, 分機請先輸入#再輸入分機號碼" value="<?=$subsitude["phone"]?>">
 					<span class="help-block phone-warning"></span>
 				</div>
 			</div>
